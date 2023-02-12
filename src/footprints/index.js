@@ -1,4 +1,12 @@
 module.exports = {
+    f_slider: require('../../input/flactyl/footprints/slider'),
+    f_smdbutton: require('../../input/flactyl/footprints/smdbutton'),
+    f_nicenano: require('../../input/flactyl/footprints/nicenano'),
+    f_jstsh2: require('../../input/flactyl/footprints/jstsh2'),
+    f_jstsh5: require('../../input/flactyl/footprints/jstsh5'),
+    f_npth: require('../../input/flactyl/footprints/npth'),
+    f_rotary: require('../../input/flactyl/footprints/rotary'),
+    f_choc: require('../../input/flactyl/footprints/choc'),
     alps: require('./alps'),
     button: require('./button'),
     choc: require('./choc'),

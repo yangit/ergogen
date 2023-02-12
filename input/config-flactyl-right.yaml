@@ -1,0 +1,262 @@
+units:
+  choc_cap_x: 17.5
+  choc_cap_y: 16.5
+  stagger_ring: cy
+  stagger_middle: 3
+  stagger_index: -6
+  stagger_index2: -3
+  slider_offset: 2.5
+  smdbutton_offset_x: 0.5
+  smdbutton_offset_y: 3
+  nnano_offset: -10.5
+points:  
+  key:
+    padding: cy
+    spread: cx
+  zones:    
+    main:      
+      rows:
+        bottom:
+        home:
+        top:
+      columns:
+        index2:                 
+        index:
+          key:
+            stagger: stagger_index2*-1                         
+        middle:
+          key:
+            stagger: stagger_index*-1
+        ring:
+          key:
+            stagger: stagger_middle*-1
+        pinky:
+          key:
+            stagger: stagger_ring*-1
+          
+outlines:
+  switch_cutouts:
+    - what: rectangle
+      where: true
+      asym: source
+      size: 14 # Plate cutouts are 14mm * 14mm for both MX and Choc
+      bound: false
+  keycaps:
+    - what: rectangle
+      where: true
+      asym: source
+      size: [choc_cap_x,choc_cap_y] # Plate cutouts are 14mm * 14mm for both MX and Choc
+      bound: false  
+  _tlcr:
+    - what: rectangle
+      where: 
+        ref: main_pinky_top
+        shift: [0,stagger_ring]
+      size: [cx,cy]  
+  _llcr:
+    - what: rectangle
+      where: 
+        ref: main_middle_bottom
+        shift: [0,stagger_index+stagger_index2]
+      size: [cx*3,cy]  
+  _rccc:
+    - what: rectangle
+      where:
+        ref: main_pinky_home
+        shift: [cx-2,0]
+      size: [cx,100]
+  _perimeter:
+    - what: rectangle
+      where: true
+      asym: source
+      size: [cx+4,cy]
+  _pcb_outline_raw: [      
+      _perimeter,            
+      _tlcr,      
+      _llcr,      
+      -_rccc, 
+  ]          
+  pcb_edgecut:
+    - what: outline
+      name: _pcb_outline_raw
+      fillet: 1.4992  
+  preview: [      
+    pcb_edgecut,    
+    -switch_cutouts,  
+    #-keycaps,    
+  ] 
+
+pcbs:
+  right:
+    outlines:
+      main_outline:
+        outline: pcb_edgecut
+        layer: Edge.Cuts
+      preview:
+        outline: preview
+        layer: Eco1.User
+      keycaps:
+        outline: keycaps
+        layer: Eco2.User
+    footprints:
+      keys_hotswap:
+        what: choc
+        where: [main_ring_top, main_ring_home, main_ring_bottom, main_middle_top, main_middle_home, main_middle_bottom, main_index_bottom, main_index2_bottom]
+        params:
+          from: GND
+          to: "{{column_net}}"          
+          hotswap: true     
+      keys_filp1:
+        what: choc
+        where:
+          ref: [main_pinky_top]
+          rotate: 180
+        params:
+          from: GND
+          to: "{{column_net}}"          
+          hotswap: true
+      keys_filp2:
+        what: choc
+        where:
+          ref: [main_pinky_home]
+          rotate: 180
+        params:
+          from: GND
+          to: "{{column_net}}"          
+          hotswap: true 
+      keys_filp3:
+        what: choc
+        where:
+          ref: [main_pinky_bottom]
+          rotate: 180
+        params:
+          from: GND
+          to: "{{column_net}}"          
+          hotswap: true       
+      keys_filp4:
+        what: choc
+        where:
+          ref: [main_index_top]
+          rotate: 180
+        params:
+          from: GND
+          to: "{{column_net}}"          
+          hotswap: true 
+      keys_filp5:
+        what: choc
+        where:
+          ref: [main_index_home]
+          rotate: 180
+        params:
+          from: GND
+          to: "{{column_net}}"          
+          hotswap: true       
+      keys_plain1:
+        what: choc
+        where: 
+          ref: main_index2_top
+          rotate: 180
+        params:
+          from: GND
+          to: "{{column_net}}"          
+          hotswap: false
+      keys_plain2:
+        what: choc
+        where: 
+          ref: main_index2_home
+          rotate: 180
+        params:
+          from: GND
+          to: "{{column_net}}"          
+          hotswap: false
+      slider:
+        what: f_slider
+        where: 
+          ref: main_ring_bottom
+          shift: [0, -cy/2+stagger_middle+stagger_index+stagger_index2+slider_offset]
+          rotate: 180
+        params:
+          side: B
+          one: fre
+          two: two
+          three: three
+      smdbutton:
+        what: f_smdbutton
+        where: 
+          ref: main_middle_top
+          shift: [-cx/2-smdbutton_offset_x, cy/2-smdbutton_offset_y]
+          rotate: 0
+        params:
+          side: B
+          one: fre
+          two: two          
+      nicenano:
+        what: f_nicenano
+        where: 
+          ref: main_index2_top
+          shift: [0, nnano_offset]
+          rotate: -90
+        params:
+          side: B
+      batt:
+        what: f_jstsh2
+        where: 
+          ref: main_index_home
+          shift: [cx/2-4, cy/2+4]
+          rotate: 0
+        params:
+          side: B
+          pos: pos
+          neg: neg
+      connector_thumb:
+        what: f_jstsh5
+        where: 
+          ref: main_ring_home
+          shift: [cx/2-4, cy/2+4]
+          rotate: -90
+        params:
+          side: B         
+      mount_hole1:
+        what: f_npth
+        where:
+          ref: main_pinky_bottom
+          shift: [-cx/2,cy/2]
+      mount_hole2:
+        what: f_npth
+        where:
+          ref: main_pinky_top
+          shift: [-cx/2,cy/2]
+      mount_hole3:
+        what: f_npth
+        where:
+          ref: main_middle_bottom
+          shift: [cx/2,-cy/2]
+      mount_hole4:
+        what: f_npth
+        where:
+          ref: main_ring_top
+          shift: [-cx/2,cy/2]
+      mount_hole5:
+        what: f_npth
+        where:
+          ref: main_index_bottom
+          shift: [-cx/2,-cy/2]
+      mount_hole6:
+        what: f_npth
+        where:
+          ref: main_index_top
+          shift: [-cx/2,cy/2-3]
+      rotary:
+        what: f_rotary
+        where:
+          ref: main_pinky_top
+          shift: [-1,cy]
+          rotate: 90
+        params:
+          from: FR
+          to: TO
+          A: A
+          B: B
+          C: C
+
+        

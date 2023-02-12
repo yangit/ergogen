@@ -1,0 +1,48 @@
+module.exports = {
+    params: {
+        designator: 'JST',
+        side: 'F',
+        pos: undefined,
+        neg: undefined
+    },
+    body: p => {
+        return `
+        (footprint "JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal" (generator pcbnew)
+        ${p.at /* parametric position */}   
+        (layer "${p.side}.Cu")
+        (tedit 62B57B79)
+        (descr "JST SH series connector, SM02B-SRSS-TB (http://www.jst-mfg.com/product/pdf/eng/eSH.pdf), generated with kicad-footprint-generator")
+        (tags "connector JST SH top entry")
+        (attr smd)
+        (fp_text reference "${p.ref}" (at 0 -3.98) ${p.ref_hide} (layer "${p.side}.SilkS") hide (effects (font (size 1 1) (thickness 0.15))))
+        (fp_text value "JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal" (at 0 3.98) (layer "${p.side}.Fab") hide (effects (font (size 1 1) (thickness 0.15))))
+        (fp_text user "B-" (at 1.2 -4.2 90 unlocked) (layer "${p.side}.SilkS") (effects (font (size 1 1) (thickness 0.15))))
+        (fp_text user "B+" (at -1.2 -4.2 90 unlocked) (layer "${p.side}.SilkS") (effects (font (size 1 1) (thickness 0.15))))
+        (fp_line (start 1.06 1.785) (end 1.06 2.775) (layer "${p.side}.Fab") (width 0.12) )
+        (fp_line (start -2.11 -0.715) (end -2.11 1.785) (layer "${p.side}.Fab") (width 0.12) )
+        (fp_line (start -2.11 1.785) (end -1.06 1.785) (layer "${p.side}.Fab") (width 0.12) )
+        (fp_line (start 2.11 -0.715) (end 2.11 1.785) (layer "${p.side}.Fab") (width 0.12) )
+        (fp_line (start 0.94 -2.685) (end -0.94 -2.685) (layer "${p.side}.Fab") (width 0.12) )
+        (fp_line (start 2.11 1.785) (end 1.06 1.785) (layer "${p.side}.Fab") (width 0.12) )
+        (fp_line (start -2.9 -3.28) (end -2.9 3.28) (layer "${p.side}.CrtYd") (width 0.05) )
+        (fp_line (start 2.9 -3.28) (end -2.9 -3.28) (layer "${p.side}.CrtYd") (width 0.05) )
+        (fp_line (start -2.9 3.28) (end 2.9 3.28) (layer "${p.side}.CrtYd") (width 0.05) )
+        (fp_line (start 2.9 3.28) (end 2.9 -3.28) (layer "${p.side}.CrtYd") (width 0.05) )
+        (fp_line (start 2 1.675) (end -2 1.675) (layer "${p.side}.Fab") (width 0.1) )
+        (fp_line (start 1 1.675) (end 0.5 0.967893) (layer "${p.side}.Fab") (width 0.1) )
+        (fp_line (start 0.5 0.967893) (end 0 1.675) (layer "${p.side}.Fab") (width 0.1) )
+        (fp_line (start 2 -2.575) (end -2 -2.575) (layer "${p.side}.Fab") (width 0.1) )
+        (fp_line (start 2 1.675) (end 2 -2.575) (layer "${p.side}.Fab") (width 0.1) )
+        (fp_line (start -2 1.675) (end -2 -2.575) (layer "${p.side}.Fab") (width 0.1) )
+        (pad "1" smd roundrect (at 0.5 2 ${p.rot}) (size 0.6 1.55) (layers "${p.side}.Cu" "${p.side}.Paste" "${p.side}.Mask") (roundrect_rratio 0.25) ${p.neg.str})
+        (pad "2" smd roundrect (at -0.5 2 ${p.rot}) (size 0.6 1.55) (layers "${p.side}.Cu" "${p.side}.Paste" "${p.side}.Mask") (roundrect_rratio 0.25) ${p.pos.str})
+        (pad "MP" smd roundrect (at 1.8 -1.875 ${p.rot}) (size 1.2 1.8) (layers "${p.side}.Cu" "${p.side}.Paste" "${p.side}.Mask") (roundrect_rratio 0.208333) )
+        (pad "MP" smd roundrect (at -1.8 -1.875 ${p.rot}) (size 1.2 1.8) (layers "${p.side}.Cu" "${p.side}.Paste" "${p.side}.Mask") (roundrect_rratio 0.208333) )
+        (model "\${KICAD6_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal.wrl"
+          (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0))
+        )
+      )
+      
+      `
+}
+}
