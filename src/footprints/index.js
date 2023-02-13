@@ -7,6 +7,7 @@ module.exports = {
     f_npth: require('../../input/flactyl/footprints/npth'),
     f_rotary: require('../../input/flactyl/footprints/rotary'),
     f_choc: require('../../input/flactyl/footprints/choc'),
+    f_logo: require('../../input/flactyl/footprints/logo'),
     alps: require('./alps'),
     button: require('./button'),
     choc: require('./choc'),

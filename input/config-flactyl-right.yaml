@@ -6,8 +6,8 @@ units:
   stagger_index: -6
   stagger_index2: -3
   slider_offset: 2.5
-  smdbutton_offset_x: 0.5
-  smdbutton_offset_y: 3
+  smdbutton_offset_x: -1
+  smdbutton_offset_y: -1.5
   nnano_offset: -10.5
 points:  
   key:
@@ -101,7 +101,17 @@ pcbs:
     footprints:
       keys_hotswap:
         what: choc
-        where: [main_ring_top, main_ring_home, main_ring_bottom, main_middle_top, main_middle_home, main_middle_bottom, main_index_bottom, main_index2_bottom]
+        where: 
+          - main_ring_top
+          - main_ring_home
+          - main_ring_bottom
+          - main_middle_top
+          - main_middle_home
+          - main_middle_bottom
+          - main_index_top
+          - main_index_home
+          - main_index_bottom
+          - main_index2_bottom
         params:
           from: GND
           to: "{{column_net}}"          
@@ -109,7 +119,7 @@ pcbs:
       keys_filp1:
         what: choc
         where:
-          ref: [main_pinky_top]
+          ref: main_pinky_top
           rotate: 180
         params:
           from: GND
@@ -118,7 +128,7 @@ pcbs:
       keys_filp2:
         what: choc
         where:
-          ref: [main_pinky_home]
+          ref: main_pinky_home
           rotate: 180
         params:
           from: GND
@@ -127,30 +137,12 @@ pcbs:
       keys_filp3:
         what: choc
         where:
-          ref: [main_pinky_bottom]
+          ref: main_pinky_bottom
           rotate: 180
         params:
           from: GND
           to: "{{column_net}}"          
-          hotswap: true       
-      keys_filp4:
-        what: choc
-        where:
-          ref: [main_index_top]
-          rotate: 180
-        params:
-          from: GND
-          to: "{{column_net}}"          
-          hotswap: true 
-      keys_filp5:
-        what: choc
-        where:
-          ref: [main_index_home]
-          rotate: 180
-        params:
-          from: GND
-          to: "{{column_net}}"          
-          hotswap: true       
+          hotswap: true             
       keys_plain1:
         what: choc
         where: 
@@ -184,8 +176,8 @@ pcbs:
         what: f_smdbutton
         where: 
           ref: main_middle_top
-          shift: [-cx/2-smdbutton_offset_x, cy/2-smdbutton_offset_y]
-          rotate: 0
+          shift: [-cx/2-smdbutton_offset_x, cy/2+smdbutton_offset_y]
+          rotate: 90
         params:
           side: B
           one: fre
@@ -234,8 +226,8 @@ pcbs:
       mount_hole4:
         what: f_npth
         where:
-          ref: main_ring_top
-          shift: [-cx/2,cy/2]
+          ref: main_middle_top
+          shift: [cx/2,-cy/2]
       mount_hole5:
         what: f_npth
         where:
@@ -258,5 +250,13 @@ pcbs:
           A: A
           B: B
           C: C
-
+      logo: 
+        what: f_logo
+        where: 
+          ref: main_middle_bottom
+          shift: [-3.5,-cy/2]
+          rotate: 90
+        params:
+          text: "Flactyl 4.0 (right)"
+          side: F
         
