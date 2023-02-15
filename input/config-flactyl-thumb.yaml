@@ -1,0 +1,208 @@
+units:
+  choc_cap_x: 17.5
+  choc_cap_y: 16.5
+  diode_x: 3.6
+  diode_y: -2.6
+points:  
+  key:
+    padding: cy
+    spread: cx
+  zones:
+    main:
+      rotate: 0
+      rows:
+        R2:
+        R1:
+        R0:
+      columns:
+        C6:
+        C5:
+outlines:
+  switch_cutouts:
+    - what: rectangle
+      where: true
+      size: 14
+  keycaps:
+    - what: rectangle
+      where: true
+      size: [choc_cap_x,choc_cap_y]
+  pcb_edgecut:
+    - what: rectangle
+      where: true
+      size: [cx,cy]
+      fillet: 1.5
+  preview: 
+    - pcb_edgecut
+    - -switch_cutouts
+
+
+pcbs:
+  thumb:
+    outlines:
+      main_outline:
+        outline: pcb_edgecut
+        layer: Edge.Cuts
+      preview:
+        outline: preview
+        layer: Eco1.User
+      keycaps:
+        outline: keycaps
+        layer: Eco2.User
+    footprints:
+      C5R0:
+        what: f_new_choc
+        where: 
+          ref: main_C5_R0
+        params:
+          from: C5
+          to: C5R0D
+          label: C5R0
+      C5R0diode:
+        what: f_diode
+        where: 
+          ref: main_C5_R0
+          shift: [diode_x,diode_y]
+          rotate: 0
+        params:
+          from: C5R0D
+          to: R0
+      C5R1:
+        what: f_new_choc
+        where: 
+          ref: main_C5_R1
+        params:
+          from: C5
+          to: C5R1D     
+          label: C5R1
+      C5R1diode:
+        what: f_diode
+        where: 
+          ref: main_C5_R1
+          shift: [diode_x,diode_y]
+          rotate: 0
+        params:  
+          from: C5R1D
+          to: R1    
+      C5R2:
+        what: f_new_choc
+        where: 
+          ref: main_C5_R2
+        params:
+          from: C5
+          to: C5R2D
+          label: C5R2
+      C5R2diode:
+        what: f_diode
+        where: 
+          ref: main_C5_R2
+          shift: [diode_x,diode_y]
+          rotate: 0
+        params:
+          from: C5R2D
+          to: R2
+      C6R0:
+        what: f_new_choc
+        where: 
+          ref: main_C6_R0
+          rotate: 180
+        params:
+          from: C6
+          to: C6R0D
+          label: C6R0          
+      C6R0diode:
+        what: f_diode
+        where: 
+          ref: main_C6_R0
+          shift: [-diode_x,-diode_y]
+          rotate: 180
+        params:
+          from: C6R0D
+          to: R0
+      C6R1:
+        what: f_new_choc
+        where: 
+          ref: main_C6_R1
+          rotate: 180
+        params:
+          from: C6
+          to: C6R1D
+          label: C6R1
+      C6R1diode:
+        what: f_diode
+        where: 
+          ref: main_C6_R1
+          shift: [-diode_x,-diode_y]
+          rotate: 180
+        params:
+          from: C6R1D
+          to: R1
+      C6R2:
+        what: f_new_choc
+        where: 
+          ref: main_C6_R2
+          rotate: 180
+        params:
+          from: C6
+          to: C6R2D
+          label: C6R2 
+      C6R2diode:
+        what: f_diode
+        where: 
+          ref: main_C6_R2
+          shift: [-diode_x,-diode_y]
+          rotate: 180
+        params:
+          from: C6R2D
+          to: R2
+      connector_thumb:
+        what: f_jstsh5
+        where: 
+          ref: main_C5_R1
+          shift: [-5,5.5]
+          rotate: 270
+        params:
+          side: B
+      mount_hole1:
+        what: f_npth
+        where:
+          ref: main_C6_R1
+          shift: [cx/2,-cy/2]
+      mount_hole2:
+        what: f_npth
+        where:
+          ref: main_C6_R1
+          shift: [cx/2-2,cy/2]
+      mount_hole3:
+        what: f_npth
+        where:
+          ref: main_C6_R1
+          shift: [-cx/2+2,cy/2]
+        params:
+          dia: 1
+      logo: 
+        what: f_text
+        where: 
+          ref: main_C5_R1
+          shift: [cx/2-1.5,0]
+          rotate: 270
+        params:
+          text: "Flactyl 4.0 (thumb)"
+          side: F
+      x:
+        what: f_text
+        where: 
+          ref: main_C5_R0
+          shift: [20,0]          
+        params:
+          text: "x"
+          side: F            
+      y:
+        what: f_text
+        where: 
+          ref: main_C5_R0
+          shift: [0,20]          
+        params:
+          text: "y"
+          side: F
+
+        

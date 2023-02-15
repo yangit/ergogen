@@ -1,7 +1,6 @@
 module.exports = {
     params: {
-        designator: 'T', // for Toggle
-        side: 'F',
+        designator: 'T', // for Toggle        
         one: undefined,
         two: undefined,
         three: undefined
@@ -13,8 +12,7 @@ module.exports = {
 
         return `
         
-        (module E73:SPDT_C128955 (layer F.Cu) (tstamp 5BF2CC3C)
-
+            (footprint E73:SPDT_C128955 (layer F.Cu) (tstamp 5BF2CC3C)
             ${p.at /* parametric position */}
 
             ${'' /* footprint reference */}
@@ -22,12 +20,12 @@ module.exports = {
             (fp_text value "" (at 0 0) (layer F.SilkS) hide (effects (font (size 1.27 1.27) (thickness 0.15))))
             
             ${'' /* outline */}
-            (fp_line (start 1.95 -1.35) (end -1.95 -1.35) (layer ${p.side}.Fab) (width 0.15))
-            (fp_line (start 0 -1.35) (end -3.3 -1.35) (layer ${p.side}.Fab) (width 0.15))
-            (fp_line (start -3.3 -1.35) (end -3.3 1.5) (layer ${p.side}.Fab) (width 0.15))
-            (fp_line (start -3.3 1.5) (end 3.3 1.5) (layer ${p.side}.Fab) (width 0.15))
-            (fp_line (start 3.3 1.5) (end 3.3 -1.35) (layer ${p.side}.Fab) (width 0.15))
-            (fp_line (start 0 -1.35) (end 3.3 -1.35) (layer ${p.side}.Fab) (width 0.15))
+            (fp_line (start 1.95 -1.35) (end -1.95 -1.35) (layer B.Fab) (width 0.15))
+            (fp_line (start 0 -1.35) (end -3.3 -1.35) (layer B.Fab) (width 0.15))
+            (fp_line (start -3.3 -1.35) (end -3.3 1.5) (layer B.Fab) (width 0.15))
+            (fp_line (start -3.3 1.5) (end 3.3 1.5) (layer B.Fab) (width 0.15))
+            (fp_line (start 3.3 1.5) (end 3.3 -1.35) (layer B.Fab) (width 0.15))
+            (fp_line (start 0 -1.35) (end 3.3 -1.35) (layer B.Fab) (width 0.15))
             
             ${'' /* extra indicator for the slider */}
             (fp_line (start -1.95 -3.85) (end 1.95 -3.85) (layer Dwgs.User) (width 0.15))
@@ -39,15 +37,15 @@ module.exports = {
             (pad "" np_thru_hole circle (at -1.5 0) (size 1 1) (drill 0.9) (layers *.Cu *.Mask))
 
             ${'' /* pins */}
-            (pad 1 smd rect (at ${right}2.25 2.075 ${p.rot}) (size 0.9 1.25) (layers ${p.side}.Cu ${p.side}.Paste ${p.side}.Mask) ${p.one.str})
-            (pad 2 smd rect (at ${left}0.75 2.075 ${p.rot}) (size 0.9 1.25) (layers ${p.side}.Cu ${p.side}.Paste ${p.side}.Mask) ${p.two.str})
-            (pad 3 smd rect (at ${left}2.25 2.075 ${p.rot}) (size 0.9 1.25) (layers ${p.side}.Cu ${p.side}.Paste ${p.side}.Mask) ${p.three.str})
+            (pad 1 smd rect (at ${right}2.25 2.075 ${p.rot}) (size 0.9 1.25) (layers B.Cu B.Paste B.Mask) ${p.one.str})
+            (pad 2 smd rect (at ${left}0.75 2.075 ${p.rot}) (size 0.9 1.25) (layers B.Cu B.Paste B.Mask) ${p.two.str})
+            (pad 3 smd rect (at ${left}2.25 2.075 ${p.rot}) (size 0.9 1.25) (layers B.Cu B.Paste B.Mask) ${p.three.str})
             
             ${'' /* side mounts */}
-            (pad "" smd rect (at 4 -1.1 ${p.rot}) (size 1.25 0.9) (layers ${p.side}.Cu ${p.side}.Paste ${p.side}.Mask))
-            (pad "" smd rect (at 4 1.1 ${p.rot}) (size 1.25 0.9) (layers ${p.side}.Cu ${p.side}.Paste ${p.side}.Mask))
-            (pad "" smd rect (at -4 1.1 ${p.rot}) (size 1.25 0.9) (layers ${p.side}.Cu ${p.side}.Paste ${p.side}.Mask))
-            (pad "" smd rect (at -4 -1.1 ${p.rot}) (size 1.25 0.9) (layers ${p.side}.Cu ${p.side}.Paste ${p.side}.Mask))
+            (pad "" smd rect (at 4 -1.1 ${p.rot}) (size 1.25 0.9) (layers B.Cu B.Paste B.Mask))
+            (pad "" smd rect (at 4 1.1 ${p.rot}) (size 1.25 0.9) (layers B.Cu B.Paste B.Mask))
+            (pad "" smd rect (at -4 1.1 ${p.rot}) (size 1.25 0.9) (layers B.Cu B.Paste B.Mask))
+            (pad "" smd rect (at -4 -1.1 ${p.rot}) (size 1.25 0.9) (layers B.Cu B.Paste B.Mask))
         )
         
         `
