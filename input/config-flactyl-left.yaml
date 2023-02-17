@@ -23,7 +23,12 @@ points:
         home:
         top:
       columns:
-        pinky:                      
+        pinky:
+          rows:
+            bottom:
+            home:
+            top:
+            ttop:
         ring:
           key:
             stagger: stagger_ring
@@ -364,6 +369,26 @@ pcbs:
         params:
           from: C4R2D
           to: R2
+      rotary:
+        what: f_rotary
+        where:
+          ref: main_pinky_ttop
+          shift: [0,0]
+          rotate: 90
+        params:
+          from: C0
+          to: C0R3D
+          A: P2
+          B: P3         
+      rotaryDiode:
+        what: f_diode
+        where: 
+          ref: main_pinky_top
+          shift: [4,cy+4]
+          rotate: 180      
+        params:
+          from: C0R3D
+          to: R3
       slider:
         what: f_slider
         where: 
@@ -438,26 +463,6 @@ pcbs:
         where:
           ref: main_index_top
           shift: [cx/2,cy/2-3]
-      rotary:
-        what: f_rotary
-        where:
-          ref: main_pinky_top
-          shift: [1,cy]
-          rotate: 90
-        params:
-          from: C0
-          to: C0R3D
-          A: P2
-          B: P3         
-      rotaryDiode:
-        what: f_diode
-        where: 
-          ref: main_pinky_top
-          shift: [4,cy+4]
-          rotate: 180      
-        params:
-          from: C0R3D
-          to: R3
       logo: 
         what: f_text
         where: 
