@@ -7,7 +7,7 @@ module.exports = {
     f_npth: require('../../input/footprints/npth'),
     f_rotary: require('../../input/footprints/rotary'),
     f_choc: require('../../input/footprints/choc'),
-    f_new_choc: require('../../input/footprints/new_choc'),
+    f_choc: require('../../input/footprints/choc'),
     f_text: require('../../input/footprints/text'),
     f_diode: require('../../input/footprints/diode'),
     alps: require('./alps'),

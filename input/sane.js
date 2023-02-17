@@ -1,5 +1,6 @@
 const yaml = require('js-yaml');
 const fs   = require('fs');
+const _   = require('lodash');
 
 const assert = (exp, msg) => {
   if (!exp) {
@@ -9,8 +10,10 @@ const assert = (exp, msg) => {
 }
 
 const keyRegexp = /^(C\d+)(R\d+)$/
-try {
-    const doc = yaml.load(fs.readFileSync(`${__dirname}/${process.argv[2]}`, 'utf8'));    
+
+fs.readdirSync(__dirname).filter((file) => file.endsWith('.yaml')).forEach(file => {
+
+    const doc = yaml.load(fs.readFileSync(`${__dirname}/${file}`, 'utf8'));    
     Object.keys(doc.pcbs).forEach((pcb)=>{
       const keys = Object.keys(doc.pcbs[pcb].footprints).filter((footprintName)=>keyRegexp.test(footprintName))
       keys.forEach((key=>{
@@ -26,7 +29,49 @@ try {
       }
       }))
       console.log(keys);
+      
+      //sane mount holes
+      Object.keys(doc.pcbs[pcb].footprints)
+        .filter(footprintName=>footprintName.startsWith('mount_hole'))
+        .forEach((footprintName)=>{
+          if (!doc.outlines.case.includes(`-_${footprintName}`)) {
+            console.log(doc.outlines.case)
+            throw new Error(`Hole ${footprintName} is not excuded from case outline`)
+          }
+          const should = {'0':{what:'circle', where:doc.pcbs[pcb].footprints[footprintName].where}}
+          const is = _.omit(doc.outlines[`_${footprintName}`],'[0].radius')
+          if (!_.isEqual(is,should )) {            
+            console.log(is, should);
+            throw new Error(`mount hole not sane: ${footprintName} file: ${file}`)            
+          }
+      })
+
+      //sane connector cutouts
+      if (doc.pcbs[pcb].footprints.connector_thumb) {
+        if (!doc.outlines.case.includes('-_connector_thumb')) {
+          console.log(doc.outlines.case)
+          throw new Error(`_connector_thumb is not excluded from case outline ${file}`)
+        }
+      }
+      if (doc.pcbs[pcb].footprints.batt) {
+        if (!doc.outlines.case.includes('-_batt')) {
+          console.log(doc.outlines.case)
+          throw new Error(`batt is not excluded from case outline ${file}`)
+        }
+      }
+      // Object.keys(doc.pcbs[pcb].footprints)
+      // .filter(footprintName=>footprintName.startsWith('connector_thumb'))
+      // .forEach((footprintName)=>{
+      //   if (!doc.outlines.case.includes(`-_${footprintName}`)) {
+      //     console.log(doc.outlines.case)
+      //     throw new Error(`Hole ${footprintName} is not excuded from case outline ${file}`)
+      //   }
+      //   const should = {'0':{what:'rectangle', where:_.omit(doc.pcbs[pcb].footprints[footprintName].where,'rotate')}}
+      //   const is = _.omit(doc.outlines[`_${footprintName}`],'[0].size')
+      //   if (!_.isEqual(is,should )) {            
+      //     console.log(is[0], should[0]);
+      //     throw new Error(`connector_thumb: ${footprintName} file: ${file}`)            
+      //   }
+      // })
     })
-  } catch (e) {
-    console.log(e);
-  }
+})

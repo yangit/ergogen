@@ -6,15 +6,24 @@ units:
   stagger_index: -6
   stagger_index2: -3
   slider_offset: 3
-  smdbutton_offset_xR: (cx/2-1)*-1
+  smdbutton_offset_x: cx/2-1
   smdbutton_offset_y: -1.5
   nnano_offset: -10.5
   diode_x: 3.6
   diode_y: -2.6
   jst5offset: 8
-  cxR: (cx)*-1
-  pinky_cutR: (2-cx)*-1
-  logoxR: (-2.5)*-1
+  pinky_cut: 2-cx
+  logox: -2.5
+  screw_ext_x: cx/2
+  nnano_y: 33+3
+  nnano_y_ext: 10
+  nnano_ext_x_shift: 4.5
+  nnano_x: 18+3
+  mh_radius: 1.1
+  connector_depth: 7
+  connector_extension: 6
+  rR: -1
+  fR: 180
 points:
   key:
     padding: cy
@@ -47,6 +56,26 @@ points:
           key:
             stagger: stagger_ring*-1
 outlines:
+  _nnano_ext:
+    - what: rectangle
+      where:
+        ref: main_index2_home
+        shift:
+          - nnano_ext_x_shift*rR
+          - 6.5+nnano_y_ext
+      size:
+        - nnano_x
+        - nnano_y+nnano_y_ext*2
+  _nnano:
+    - what: rectangle
+      where:
+        ref: main_index2_home
+        shift:
+          - 0
+          - 6.5
+      size:
+        - 18+3
+        - nnano_y
   switch_cutouts:
     - what: rectangle
       where: true
@@ -61,6 +90,82 @@ outlines:
         - choc_cap_x
         - choc_cap_y
       bound: false
+  _batt:
+    - what: rectangle
+      size:
+        - connector_depth+connector_extension
+        - 7
+      where:
+        ref: main_ring_home
+        shift:
+          - connector_extension*rR/2
+          - -5.5
+  _connector_thumb:
+    - what: rectangle
+      size:
+        - connector_depth+connector_extension
+        - 10
+      where:
+        ref: main_middle_bottom
+        shift:
+          - connector_extension*rR/2
+          - '-jst5offset'
+  _mount_hole1:
+    - what: circle
+      where:
+        ref: main_pinky_bottom
+        shift:
+          - cx*rR/2
+          - cy/2
+      radius: mh_radius
+  _mount_hole2:
+    - what: circle
+      where:
+        ref: main_pinky_top
+        shift:
+          - cx*rR/2
+          - cy/2
+      radius: mh_radius
+  _mount_hole3:
+    - what: circle
+      where:
+        ref: main_middle_bottom
+        shift:
+          - '-cx*rR/2'
+          - '-cy/2'
+      radius: mh_radius
+  _mount_hole4:
+    - what: circle
+      where:
+        ref: main_middle_top
+        shift:
+          - '-cx*rR/2'
+          - '-cy/2'
+      radius: mh_radius
+  _mount_hole5:
+    - what: circle
+      where:
+        ref: main_index_bottom
+        shift:
+          - cx*rR/2
+          - '-cy/2'
+      radius: mh_radius
+  _mount_hole6:
+    - what: circle
+      where:
+        ref: main_index_top
+        shift:
+          - cx*rR/2
+          - cy/2-1.5
+      radius: mh_radius
+  _screw_ext:
+    - what: circle
+      where:
+        ref: main_index_top
+        shift:
+          - screw_ext_x*rR
+          - cy/2-1.5
+      radius: 3
   _bottom_ext:
     - what: rectangle
       where:
@@ -76,7 +181,7 @@ outlines:
       where:
         ref: main_pinky_home
         shift:
-          - pinky_cutR
+          - pinky_cut*rR
           - 0
       size:
         - cx
@@ -90,30 +195,40 @@ outlines:
         - cy
   _pcb_outline_raw:
     - _perimeter
+    - _screw_ext
     - _bottom_ext
     - '-_pinky_cut'
   pcb_edgecut:
     - what: outline
       name: _pcb_outline_raw
       fillet: 1.4992
-  preview:
+  case:
     - pcb_edgecut
-    - '-switch_cutouts'
+    - '-_nnano'
+    - '-_nnano_ext'
+    - '-_batt'
+    - '-_connector_thumb'
+    - '-_mount_hole1'
+    - '-_mount_hole2'
+    - '-_mount_hole3'
+    - '-_mount_hole4'
+    - '-_mount_hole5'
+    - '-_mount_hole6'
 pcbs:
   right:
     outlines:
       main_outline:
         outline: pcb_edgecut
         layer: Edge.Cuts
-      preview:
-        outline: preview
+      case:
+        outline: case
         layer: Eco1.User
       keycaps:
         outline: keycaps
         layer: Eco2.User
     footprints:
       C0R0:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_pinky_top
           rotate: 0
@@ -126,14 +241,14 @@ pcbs:
         where:
           ref: main_pinky_top
           shift:
-            - '-diode_x'
-            - '-diode_y'
+            - '-1*(-diode_x)'
+            - '-1*(-diode_y)'
           rotate: 0
         params:
           from: C0R0D
           to: R0
       C0R1:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_pinky_home
           rotate: 0
@@ -146,14 +261,14 @@ pcbs:
         where:
           ref: main_pinky_home
           shift:
-            - '-diode_x'
-            - '-diode_y'
+            - '-1*(-diode_x)'
+            - '-1*(-diode_y)'
           rotate: 0
         params:
           from: C0R1D
           to: R1
       C0R2:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_pinky_bottom
           rotate: 0
@@ -166,14 +281,14 @@ pcbs:
         where:
           ref: main_pinky_bottom
           shift:
-            - '-diode_x'
-            - '-diode_y'
+            - '-1*(-diode_x)'
+            - '-1*(-diode_y)'
           rotate: 0
         params:
           from: C0R2D
           to: R2
       C1R0:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_ring_top
           rotate: 180
@@ -193,7 +308,7 @@ pcbs:
           from: C1R0D
           to: R0
       C1R1:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_ring_home
           rotate: 180
@@ -213,7 +328,7 @@ pcbs:
           from: C1R1D
           to: R1
       C1R2:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_ring_bottom
           rotate: 180
@@ -233,7 +348,7 @@ pcbs:
           from: C1R2D
           to: R2
       C2R0:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_middle_top
           rotate: -180
@@ -246,14 +361,14 @@ pcbs:
         where:
           ref: main_middle_top
           shift:
-            - diode_x
-            - diode_y
+            - '-1*(diode_x)'
+            - '-1*(diode_y)'
           rotate: -180
         params:
           from: C2R0D
           to: R0
       C2R1:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_middle_home
           rotate: 180
@@ -273,7 +388,7 @@ pcbs:
           from: C2R1D
           to: R1
       C2R2:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_middle_bottom
           rotate: 180
@@ -293,7 +408,7 @@ pcbs:
           from: C2R2D
           to: R2
       C3R0:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_index_top
           rotate: -180
@@ -306,14 +421,14 @@ pcbs:
         where:
           ref: main_index_top
           shift:
-            - diode_x
-            - diode_y
+            - '-1*(diode_x)'
+            - '-1*(diode_y)'
           rotate: -180
         params:
           from: C3R0D
           to: R0
       C3R1:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_index_home
           rotate: -180
@@ -326,14 +441,14 @@ pcbs:
         where:
           ref: main_index_home
           shift:
-            - diode_x
-            - diode_y
+            - '-1*(diode_x)'
+            - '-1*(diode_y)'
           rotate: -180
         params:
           from: C3R1D
           to: R1
       C3R2:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_index_bottom
           rotate: 180
@@ -353,7 +468,7 @@ pcbs:
           from: C3R2D
           to: R2
       C4R0:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_index2_top
         params:
@@ -372,7 +487,7 @@ pcbs:
           from: C4R0D
           to: R0
       C4R1:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_index2_home
         params:
@@ -391,7 +506,7 @@ pcbs:
           from: C4R1D
           to: R1
       C4R2:
-        what: f_new_choc
+        what: f_choc
         where:
           ref: main_index2_bottom
           rotate: 180
@@ -451,7 +566,7 @@ pcbs:
         where:
           ref: main_middle_top
           shift:
-            - smdbutton_offset_xR
+            - smdbutton_offset_x*rR
             - cy/2+smdbutton_offset_y
           rotate: 270
         params:
@@ -474,7 +589,7 @@ pcbs:
           shift:
             - 0
             - -5.5
-          rotate: 270
+          rotate: 270-fR
         params:
           pos: BSLI
           neg: GND
@@ -485,7 +600,7 @@ pcbs:
           shift:
             - 0
             - '-jst5offset'
-          rotate: -90
+          rotate: '-90+fR'
         params:
           side: B
       mount_hole1:
@@ -493,49 +608,49 @@ pcbs:
         where:
           ref: main_pinky_bottom
           shift:
-            - cxR/2
+            - cx*rR/2
             - cy/2
       mount_hole2:
         what: f_npth
         where:
           ref: main_pinky_top
           shift:
-            - cxR/2
+            - cx*rR/2
             - cy/2
       mount_hole3:
         what: f_npth
         where:
           ref: main_middle_bottom
           shift:
-            - '-cxR/2'
+            - '-cx*rR/2'
             - '-cy/2'
       mount_hole4:
         what: f_npth
         where:
           ref: main_middle_top
           shift:
-            - '-cxR/2'
+            - '-cx*rR/2'
             - '-cy/2'
       mount_hole5:
         what: f_npth
         where:
           ref: main_index_bottom
           shift:
-            - cxR/2
+            - cx*rR/2
             - '-cy/2'
       mount_hole6:
         what: f_npth
         where:
           ref: main_index_top
           shift:
-            - cxR/2
-            - cy/2-3
+            - cx*rR/2
+            - cy/2-1.5
       logo:
         what: f_text
         where:
           ref: main_middle_bottom
           shift:
-            - logoxR
+            - logox*rR
             - '-cy/2'
         params:
           text: Flactyl 4.0 (left)
