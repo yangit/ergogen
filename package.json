@@ -19,9 +19,14 @@
         "js-yaml": "^3.14.1",
         "jszip": "^3.10.1",
         "kle-serial": "github:ergogen/kle-serial#ergogen",
+        "lodash": "^4.17.21",
         "makerjs": "github:ergogen/maker.js#ergogen",
         "mathjs": "^11.5.0",
-        "yargs": "^17.6.2"
+        "yargs": "^17.6.2",
+        "eslint": "^8.23.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "prettier": "^2.7.1"
     },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^24.0.1",
