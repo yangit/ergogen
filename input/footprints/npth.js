@@ -1,5 +1,6 @@
 module.exports = {
     params: {    
+    designator: 'H', 
         dia: 2.2,
     },
     body: p => {

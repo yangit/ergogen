@@ -14,7 +14,7 @@ module.exports = {
         to: undefined,
         A: undefined,
         B: undefined,
-        C: undefined
+        C: {type: 'net', value: 'GND'}
     },
     body: p => `
         (module rotary_encoder (layer F.Cu) (tedit 603326DE)

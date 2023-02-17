@@ -1,6 +1,6 @@
 module.exports = {
     params: {
-        designator: 'S',        
+        designator: 'D',        
         from: {type: 'net', value: 'C5'},
         to: {type: 'net', value: 'R0'},
     },

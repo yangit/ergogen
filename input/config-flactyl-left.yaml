@@ -312,6 +312,40 @@ pcbs:
         params:
           from: C3R2D
           to: R2
+      C4R0:
+        what: f_new_choc
+        where: 
+          ref: main_index2_top          
+        params:
+          from: C4
+          to: C4R0D
+          label: C4R0
+          hotswap: false
+      C4R0diode:
+        what: f_diode
+        where: 
+          ref: main_index2_top
+          shift: [diode_x,diode_y]          
+        params:
+          from: C4R0D
+          to: R0
+      C4R1:
+        what: f_new_choc
+        where: 
+          ref: main_index2_home          
+        params:
+          from: C4
+          to: C4R1D
+          label: C4R1
+          hotswap: false
+      C4R1diode:
+        what: f_diode
+        where: 
+          ref: main_index2_home
+          shift: [diode_x,diode_y]          
+        params:
+          from: C4R1D
+          to: R1          
       C4R2:
         what: f_new_choc
         where: 
@@ -330,16 +364,6 @@ pcbs:
         params:
           from: C4R2D
           to: R2
-      keys_plain:
-        what: f_choc
-        where:
-          - main_index2_top
-          - main_index2_home
-        params:
-          from: GND
-          to: "{{column_net}}"          
-          hotswap: false
-          rotate180: true
       slider:
         what: f_slider
         where: 
@@ -421,11 +445,19 @@ pcbs:
           shift: [1,cy]
           rotate: 90
         params:
-          from: FR
-          to: TO
-          A: A
-          B: B
-          C: C
+          from: C0
+          to: C0R3D
+          A: P2
+          B: P3         
+      rotaryDiode:
+        what: f_diode
+        where: 
+          ref: main_pinky_top
+          shift: [4,cy+4]
+          rotate: 180      
+        params:
+          from: C0R3D
+          to: R3
       logo: 
         what: f_text
         where: 

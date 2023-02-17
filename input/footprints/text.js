@@ -1,11 +1,12 @@
 module.exports = {
     params: {    
+        designator: 'T', 
         text: undefined,
         side: "F",
     },
     body: p => {        
         // console.log(p)
-        return `(footprint "flactyl logo" (generator pcbnew)
+        return `(footprint "somelogo" (generator pcbnew)
         (layer "${p.side}.SilkS")
         ${p.at /* parametric position */} 
         (tedit 62C29C08)        

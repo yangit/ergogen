@@ -5,10 +5,34 @@ module.exports = {
         designator: 'S',        
         from: undefined,
         to: undefined,
-        label: undefined
+        label: undefined,
+        hotswap: true
+        
     },
     body: p => {
-        // console.log(p)
+        
+    function pins(def_neg, def_pos, def_side) {
+        if(p.hotswap) {
+          return `            
+            ${'' /* holes */}
+            (pad "" np_thru_hole circle (at -5 3.75) (size 3 3) (drill 3) (layers *.Cu *.Mask))
+            (pad "" np_thru_hole circle (at 0 5.95) (size 3 3) (drill 3) (layers *.Cu *.Mask))            
+            ${'' /* net pads */}
+            (pad "1" smd rect (at 3.275 5.95) (size 2.6 2.6) (layers "B.Cu" "B.Paste" "B.Mask") ${p.to.str})            
+            (pad "2" smd rect (at -8.275 3.75) (size 2.6 2.6) (layers "B.Cu" "B.Paste" "B.Mask") ${p.from.str})
+            ${'' /* vias */}
+            (pad "3" thru_hole circle (at 3.275 5.95) (size 0.6 0.6) (drill 0.3) (layers *.Cu) (zone_connect 2) ${p.to.str})
+            (pad "4" thru_hole circle (at -8.275 3.75) (size 0.6 0.6) (drill 0.3) (layers *.Cu) (zone_connect 2) ${p.from.str})            
+          `
+        } else {
+            return `
+              ${''/* pins */}
+              (pad 1 thru_hole circle (at -5 3.8) (size 2.032 2.032) (drill 1.27) (layers *.Cu *.Mask) ${p.to.str})
+              (pad 2 thru_hole circle (at 0 5.9) (size 2.032 2.032) (drill 1.27) (layers *.Cu *.Mask) ${p.from.str})
+            `
+        }
+      }
+
 return `
     (footprint "Kailh_socket_PG1350_no_silk" (generator pcbnew)
     (layer "B.Cu")
@@ -40,15 +64,13 @@ return `
     (fp_line (start -2.6 -3.1) (end 2.6 -3.1) (layer "B.Fab") (width 0.15))
     (fp_line (start -6.9 6.9) (end 6.9 6.9) (layer "B.Fab") (width 0.15))
     (fp_line (start -2.6 -3.1) (end -2.6 -6.3) (layer "B.Fab") (width 0.15))
-
-    (pad "" np_thru_hole circle (at -5 3.75) (size 3 3) (drill 3) (layers *.Cu *.Mask))
+    ${'' /* normal holes */}
     (pad "" np_thru_hole circle (at 0 0) (size 3.429 3.429) (drill 3.429) (layers *.Cu *.Mask))
-    (pad "" np_thru_hole circle (at 5.5 0) (size 1.7018 1.7018) (drill 1.7018) (layers *.Cu *.Mask))
-    (pad "" np_thru_hole circle (at 0 5.95) (size 3 3) (drill 3) (layers *.Cu *.Mask))
+    (pad "" np_thru_hole circle (at 5.5 0) (size 1.7018 1.7018) (drill 1.7018) (layers *.Cu *.Mask))            
     (pad "" np_thru_hole circle (at -5.5 0) (size 1.7018 1.7018) (drill 1.7018) (layers *.Cu *.Mask))
-    (pad "1" smd rect (at 3.275 5.95) (size 2.6 2.6) (layers "B.Cu" "B.Paste" "B.Mask") ${p.to.str})
-    (pad "3" thru_hole circle (at 3.275 5.95) (size 0.6 0.6) (drill 0.3) (layers *.Cu) (zone_connect 2) ${p.to.str})
-    (pad "2" smd rect (at -8.275 3.75) (size 2.6 2.6) (layers "B.Cu" "B.Paste" "B.Mask") ${p.from.str})
-    (pad "4" thru_hole circle (at -8.275 3.75) (size 0.6 0.6) (drill 0.3) (layers *.Cu) (zone_connect 2) ${p.from.str})
+      
+    ${pins()}
+
+   
     )`
  }}
