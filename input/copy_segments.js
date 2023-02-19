@@ -1,5 +1,5 @@
 const routed = `${__dirname}/routed`;
-const pcbs = `${__dirname}/../output/flactyl/pcbs`;
+const pcbs = `${__dirname}/../output/pcbs`;
 const fs = require('fs');
 const extension ='.kicad_pcb'
 const segmentRegex = /\(segment .+\)\)\n/g
