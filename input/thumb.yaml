@@ -45,21 +45,21 @@ outlines:
         ref: main_C6_R1
         shift: [-cx/2+2,cy/2]
       radius: 1
-  switch_cutouts:
+  thumb_switch_cutouts:
     - what: rectangle
       where: true
       size: 14
-  keycaps:
+  thumb_keycaps:
     - what: rectangle
       where: true
       size: [choc_cap_x,choc_cap_y]
-  pcb_edgecut:
+  thumb_pcb_edgecut:
     - what: rectangle
       where: true
       size: [cx,cy]
       fillet: 1.5
-  case: [
-    pcb_edgecut, 
+  thumb_case: [
+    thumb_pcb_edgecut, 
     # -switch_cutouts,
     -_mount_hole1,
     -_mount_hole2,
@@ -71,14 +71,14 @@ outlines:
 pcbs:
   thumb:
     outlines:
-      main_outline:
-        outline: pcb_edgecut
+      pcb_edgecut:
+        outline: thumb_pcb_edgecut
         layer: Edge.Cuts
       case:
-        outline: case
+        outline: thumb_case
         layer: Eco1.User
       keycaps:
-        outline: keycaps
+        outline: thumb_keycaps
         layer: Eco2.User
     footprints:
       C5R0:

@@ -34,7 +34,8 @@ fs.readdirSync(__dirname).filter((file) => file.endsWith('.yaml')).forEach(file 
       Object.keys(doc.pcbs[pcb].footprints)
         .filter(footprintName=>footprintName.startsWith('mount_hole'))
         .forEach((footprintName)=>{
-          if (!doc.outlines.case.includes(`-_${footprintName}`)) {
+          const caseName = Object.keys(doc.outlines).find(key=>key.endsWith('case'))
+          if (!doc.outlines[caseName].includes(`-_${footprintName}`)) {
             console.log(doc.outlines.case)
             throw new Error(`Hole ${footprintName} is not excuded from case outline`)
           }
@@ -48,30 +49,18 @@ fs.readdirSync(__dirname).filter((file) => file.endsWith('.yaml')).forEach(file 
 
       //sane connector cutouts
       if (doc.pcbs[pcb].footprints.connector_thumb) {
-        if (!doc.outlines.case.includes('-_connector_thumb')) {
+        const caseName = Object.keys(doc.outlines).find(key=>key.endsWith('case'))
+        if (!doc.outlines[caseName].includes('-_connector_thumb')) {
           console.log(doc.outlines.case)
           throw new Error(`_connector_thumb is not excluded from case outline ${file}`)
         }
       }
       if (doc.pcbs[pcb].footprints.batt) {
-        if (!doc.outlines.case.includes('-_batt')) {
+        const caseName = Object.keys(doc.outlines).find(key=>key.endsWith('case'))
+        if (!doc.outlines[caseName].includes('-_batt')) {
           console.log(doc.outlines.case)
           throw new Error(`batt is not excluded from case outline ${file}`)
         }
-      }
-      // Object.keys(doc.pcbs[pcb].footprints)
-      // .filter(footprintName=>footprintName.startsWith('connector_thumb'))
-      // .forEach((footprintName)=>{
-      //   if (!doc.outlines.case.includes(`-_${footprintName}`)) {
-      //     console.log(doc.outlines.case)
-      //     throw new Error(`Hole ${footprintName} is not excuded from case outline ${file}`)
-      //   }
-      //   const should = {'0':{what:'rectangle', where:_.omit(doc.pcbs[pcb].footprints[footprintName].where,'rotate')}}
-      //   const is = _.omit(doc.outlines[`_${footprintName}`],'[0].size')
-      //   if (!_.isEqual(is,should )) {            
-      //     console.log(is[0], should[0]);
-      //     throw new Error(`connector_thumb: ${footprintName} file: ${file}`)            
-      //   }
-      // })
+      }      
     })
 })

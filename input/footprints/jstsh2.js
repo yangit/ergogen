@@ -36,10 +36,7 @@ module.exports = {
         (pad "2" smd roundrect (at 0.5 2 ${p.rot}) (size 0.6 1.55) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.25) ${p.pos.str})
         (pad "1" smd roundrect (at -0.5 2 ${p.rot}) (size 0.6 1.55) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.25) ${p.neg.str})
         (pad "MP" smd roundrect (at 1.8 -1.875 ${p.rot}) (size 1.2 1.8) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.208333) )
-        (pad "MP" smd roundrect (at -1.8 -1.875 ${p.rot}) (size 1.2 1.8) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.208333) )
-        (model "\${KICAD6_3DMODEL_DIR}/Connector_JST.3dshapes/JST_SH_SM02B-SRSS-TB_1x02-1MP_P1.00mm_Horizontal.wrl"
-          (offset (xyz 0 0 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 0))
-        )
+        (pad "MP" smd roundrect (at -1.8 -1.875 ${p.rot}) (size 1.2 1.8) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.208333) )        
       )
       
       `

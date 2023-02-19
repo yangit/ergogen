@@ -1,0 +1,107 @@
+units:
+  choc_cap_x: 17.5
+  choc_cap_y: 16.5
+  diode_x: 3.6
+  diode_y: -2.6
+points:  
+  key:
+    padding: cy
+    spread: cx
+  zones:
+    main:      
+      rows:
+        R1:
+        R0:        
+      columns:
+        C0:
+outlines:
+  _connector_thumb:
+    - what: rectangle
+      size: [5,5]
+      where: 
+        ref: main_C0_R1
+        shift: [0, 0]
+  test_switch_cutouts:
+    - what: rectangle
+      where: true
+      size: 14
+  test_keycaps:
+    - what: rectangle
+      where: true
+      size: [choc_cap_x,choc_cap_y]
+  test_pcb_edgecut:
+    - what: rectangle
+      where: true
+      size: [cx,cy]
+      fillet: 1.5
+  test_case: [
+    test_pcb_edgecut,
+    -_connector_thumb,
+  ]
+
+
+pcbs:
+  test:
+    outlines:
+      pcb_edgecut:
+        outline: test_pcb_edgecut
+        layer: Edge.Cuts
+      case:
+        outline: test_case
+        layer: Eco1.User
+      keycaps:
+        outline: test_keycaps
+        layer: Eco2.User
+    footprints:
+      C0R0:
+        what: f_choc
+        where: 
+          ref: main_C0_R0
+        params:
+          from: C0
+          to: C0R0D
+          label: C0R0
+      C0R0diode:
+        what: f_diode
+        where: 
+          ref: main_C0_R0
+          shift: [diode_x,diode_y]
+          rotate: 0
+        params:
+          from: C0R0D
+          to: R0      
+      connector_thumb:
+        what: f_jstsh5
+        where: 
+          ref: main_C0_R1
+          shift: [-5,5.5]
+          rotate: 270
+        params:
+          side: B  
+      logo: 
+        what: f_text
+        where: 
+          ref: main_C0_R1
+          shift: [cx/2-1.5,0]
+          rotate: 270
+        params:
+          text: "Flactyl 4.0 (test)"
+          side: F
+      x:
+        what: f_text
+        where: 
+          ref: main_C0_R0
+          shift: [20,0]          
+        params:
+          text: "x"
+          side: F            
+      y:
+        what: f_text
+        where: 
+          ref: main_C0_R0
+          shift: [0,20]          
+        params:
+          text: "y"
+          side: F
+
+        

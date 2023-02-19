@@ -55,176 +55,17 @@ points:
             ttop: null
           key:
             stagger: stagger_ring*-1
-outlines:
-  _nnano_ext:
-    - what: rectangle
-      where:
-        ref: main_index2_home
-        shift:
-          - nnano_ext_x_shift*rR
-          - 6.5+nnano_y_ext
-      size:
-        - nnano_x
-        - nnano_y+nnano_y_ext*2
-  _nnano:
-    - what: rectangle
-      where:
-        ref: main_index2_home
-        shift:
-          - 0
-          - 6.5
-      size:
-        - 18+3
-        - nnano_y
-  switch_cutouts:
-    - what: rectangle
-      where: true
-      asym: source
-      size: 14
-      bound: false
-  keycaps:
-    - what: rectangle
-      where: true
-      asym: source
-      size:
-        - choc_cap_x
-        - choc_cap_y
-      bound: false
-  _batt:
-    - what: rectangle
-      size:
-        - connector_depth+connector_extension
-        - 7
-      where:
-        ref: main_ring_home
-        shift:
-          - connector_extension*rR/2
-          - -5.5
-  _connector_thumb:
-    - what: rectangle
-      size:
-        - connector_depth+connector_extension
-        - 10
-      where:
-        ref: main_middle_bottom
-        shift:
-          - connector_extension*rR/2
-          - '-jst5offset'
-  _mount_hole1:
-    - what: circle
-      where:
-        ref: main_pinky_bottom
-        shift:
-          - cx*rR/2
-          - cy/2
-      radius: mh_radius
-  _mount_hole2:
-    - what: circle
-      where:
-        ref: main_pinky_top
-        shift:
-          - cx*rR/2
-          - cy/2
-      radius: mh_radius
-  _mount_hole3:
-    - what: circle
-      where:
-        ref: main_middle_bottom
-        shift:
-          - '-cx*rR/2'
-          - '-cy/2'
-      radius: mh_radius
-  _mount_hole4:
-    - what: circle
-      where:
-        ref: main_middle_top
-        shift:
-          - '-cx*rR/2'
-          - '-cy/2'
-      radius: mh_radius
-  _mount_hole5:
-    - what: circle
-      where:
-        ref: main_index_bottom
-        shift:
-          - cx*rR/2
-          - '-cy/2'
-      radius: mh_radius
-  _mount_hole6:
-    - what: circle
-      where:
-        ref: main_index_top
-        shift:
-          - cx*rR/2
-          - cy/2-1.5
-      radius: mh_radius
-  _screw_ext:
-    - what: circle
-      where:
-        ref: main_index_top
-        shift:
-          - screw_ext_x*rR
-          - cy/2-1.5
-      radius: 3
-  _bottom_ext:
-    - what: rectangle
-      where:
-        ref: main_middle_bottom
-        shift:
-          - 0
-          - stagger_index+stagger_index2
-      size:
-        - cx*3
-        - cy
-  _pinky_cut:
-    - what: rectangle
-      where:
-        ref: main_pinky_home
-        shift:
-          - pinky_cut*rR
-          - 0
-      size:
-        - cx
-        - 100
-  _perimeter:
-    - what: rectangle
-      where: true
-      asym: source
-      size:
-        - cx+4
-        - cy
-  _pcb_outline_raw:
-    - _perimeter
-    - _screw_ext
-    - _bottom_ext
-    - '-_pinky_cut'
-  pcb_edgecut:
-    - what: outline
-      name: _pcb_outline_raw
-      fillet: 1.4992
-  case:
-    - pcb_edgecut
-    - '-_nnano'
-    - '-_nnano_ext'
-    - '-_batt'
-    - '-_connector_thumb'
-    - '-_mount_hole1'
-    - '-_mount_hole2'
-    - '-_mount_hole3'
-    - '-_mount_hole4'
-    - '-_mount_hole5'
-    - '-_mount_hole6'
 pcbs:
   right:
     outlines:
-      main_outline:
-        outline: pcb_edgecut
+      pcb_edgecut:
+        outline: right_pcb_edgecut
         layer: Edge.Cuts
       case:
-        outline: case
+        outline: right_case
         layer: Eco1.User
       keycaps:
-        outline: keycaps
+        outline: right_keycaps
         layer: Eco2.User
     footprints:
       C0R0:
@@ -655,3 +496,162 @@ pcbs:
         params:
           text: Flactyl 4.0 (left)
           side: F
+outlines:
+  _nnano_ext:
+    - what: rectangle
+      where:
+        ref: main_index2_home
+        shift:
+          - nnano_ext_x_shift*rR
+          - 6.5+nnano_y_ext
+      size:
+        - nnano_x
+        - nnano_y+nnano_y_ext*2
+  _nnano:
+    - what: rectangle
+      where:
+        ref: main_index2_home
+        shift:
+          - 0
+          - 6.5
+      size:
+        - 18+3
+        - nnano_y
+  right_switch_cutouts:
+    - what: rectangle
+      where: true
+      asym: source
+      size: 14
+      bound: false
+  right_keycaps:
+    - what: rectangle
+      where: true
+      asym: source
+      size:
+        - choc_cap_x
+        - choc_cap_y
+      bound: false
+  _batt:
+    - what: rectangle
+      size:
+        - connector_depth+connector_extension
+        - 7
+      where:
+        ref: main_ring_home
+        shift:
+          - connector_extension*rR/2
+          - -5.5
+  _connector_thumb:
+    - what: rectangle
+      size:
+        - connector_depth+connector_extension
+        - 10
+      where:
+        ref: main_middle_bottom
+        shift:
+          - connector_extension*rR/2
+          - '-jst5offset'
+  _mount_hole1:
+    - what: circle
+      where:
+        ref: main_pinky_bottom
+        shift:
+          - cx*rR/2
+          - cy/2
+      radius: mh_radius
+  _mount_hole2:
+    - what: circle
+      where:
+        ref: main_pinky_top
+        shift:
+          - cx*rR/2
+          - cy/2
+      radius: mh_radius
+  _mount_hole3:
+    - what: circle
+      where:
+        ref: main_middle_bottom
+        shift:
+          - '-cx*rR/2'
+          - '-cy/2'
+      radius: mh_radius
+  _mount_hole4:
+    - what: circle
+      where:
+        ref: main_middle_top
+        shift:
+          - '-cx*rR/2'
+          - '-cy/2'
+      radius: mh_radius
+  _mount_hole5:
+    - what: circle
+      where:
+        ref: main_index_bottom
+        shift:
+          - cx*rR/2
+          - '-cy/2'
+      radius: mh_radius
+  _mount_hole6:
+    - what: circle
+      where:
+        ref: main_index_top
+        shift:
+          - cx*rR/2
+          - cy/2-1.5
+      radius: mh_radius
+  _screw_ext:
+    - what: circle
+      where:
+        ref: main_index_top
+        shift:
+          - screw_ext_x*rR
+          - cy/2-1.5
+      radius: 3
+  _bottom_ext:
+    - what: rectangle
+      where:
+        ref: main_middle_bottom
+        shift:
+          - 0
+          - stagger_index+stagger_index2
+      size:
+        - cx*3
+        - cy
+  _pinky_cut:
+    - what: rectangle
+      where:
+        ref: main_pinky_home
+        shift:
+          - pinky_cut*rR
+          - 0
+      size:
+        - cx
+        - 100
+  _perimeter:
+    - what: rectangle
+      where: true
+      asym: source
+      size:
+        - cx+4
+        - cy
+  _pcb_outline_raw:
+    - _perimeter
+    - _screw_ext
+    - _bottom_ext
+    - '-_pinky_cut'
+  right_pcb_edgecut:
+    - what: outline
+      name: _pcb_outline_raw
+      fillet: 1.49
+  right_case:
+    - right_pcb_edgecut
+    - '-_nnano'
+    - '-_nnano_ext'
+    - '-_batt'
+    - '-_connector_thumb'
+    - '-_mount_hole1'
+    - '-_mount_hole2'
+    - '-_mount_hole3'
+    - '-_mount_hole4'
+    - '-_mount_hole5'
+    - '-_mount_hole6'

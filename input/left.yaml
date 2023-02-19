@@ -67,13 +67,13 @@ outlines:
         ref: main_index2_home
         shift: [0,6.5]
       size: [18+3, nnano_y]
-  switch_cutouts:
+  left_switch_cutouts:
     - what: rectangle
       where: true
       asym: source
       size: 14 # Plate cutouts are 14mm * 14mm for both MX and Choc
       bound: false
-  keycaps:
+  left_keycaps:
     - what: rectangle
       where: true
       asym: source
@@ -156,14 +156,14 @@ outlines:
       _bottom_ext,      
       -_pinky_cut,  
   ]          
-  pcb_edgecut:
+  left_pcb_edgecut:
     - what: outline
       name: _pcb_outline_raw
-      fillet: 1.4992  
-  case: [      
-    pcb_edgecut,    
-    #-switch_cutouts,
-    #-keycaps,
+      fillet: 1.49
+  left_case: [      
+    left_pcb_edgecut,    
+    #-left_switch_cutouts,
+    #-left_keycaps,
     -_nnano,
     -_nnano_ext,
     -_batt,
@@ -180,14 +180,14 @@ outlines:
 pcbs:
   left:
     outlines:
-      main_outline:
-        outline: pcb_edgecut
+      pcb_edgecut:
+        outline: left_pcb_edgecut
         layer: Edge.Cuts
       case:
-        outline: case
+        outline: left_case
         layer: Eco1.User
       keycaps:
-        outline: keycaps
+        outline: left_keycaps
         layer: Eco2.User
     footprints:
       C0R0:
