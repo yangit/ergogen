@@ -8,11 +8,11 @@ module.exports = {
 return `
 (footprint "D_SOD-523" (generator pcbnew)
   (layer "B.Cu")
-  ${p.at /* parametric position */}
   (tedit 62B5284F)
   (descr "http://www.diodes.com/datasheets/ap02001.pdf p.144")
   (tags "Diode SOD523")
   (attr smd)
+  ${p.at /* parametric position */}
   (fp_text reference "${p.ref}" (at 0 -2.5) (layer "B.SilkS") ${p.ref_hide} (effects (font (size 1 1) (thickness 0.15))))
   (fp_text value "D_SOD-523" (at 0 1.4) (layer "B.Fab") (effects (font (size 1 1) (thickness 0.15))))
   (fp_line (start 0.7 0.6) (end -1.15 0.6) (layer "B.SilkS") (width 0.12) )

@@ -36,7 +36,7 @@ fs.readdirSync(__dirname).filter((file) => file.endsWith('.yaml')).forEach(file 
         .forEach((footprintName)=>{
           const caseName = Object.keys(doc.outlines).find(key=>key.endsWith('case'))
           if (!doc.outlines[caseName].includes(`-_${footprintName}`)) {
-            console.log(doc.outlines.case)
+            console.log(doc.outlines[caseName])
             throw new Error(`Hole ${footprintName} is not excuded from case outline`)
           }
           const should = {'0':{what:'circle', where:doc.pcbs[pcb].footprints[footprintName].where}}
@@ -51,16 +51,17 @@ fs.readdirSync(__dirname).filter((file) => file.endsWith('.yaml')).forEach(file 
       if (doc.pcbs[pcb].footprints.connector_thumb) {
         const caseName = Object.keys(doc.outlines).find(key=>key.endsWith('case'))
         if (!doc.outlines[caseName].includes('-_connector_thumb')) {
-          console.log(doc.outlines.case)
+          console.log(doc.outlines[caseName])
           throw new Error(`_connector_thumb is not excluded from case outline ${file}`)
         }
       }
       if (doc.pcbs[pcb].footprints.batt) {
         const caseName = Object.keys(doc.outlines).find(key=>key.endsWith('case'))
         if (!doc.outlines[caseName].includes('-_batt')) {
-          console.log(doc.outlines.case)
+          console.log(doc.outlines[caseName])
+          caseName
           throw new Error(`batt is not excluded from case outline ${file}`)
         }
-      }      
+      }
     })
 })

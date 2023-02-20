@@ -14,12 +14,20 @@ points:
         R0:        
       columns:
         C0:
+        C1:
+        C2:
 outlines:
   _connector_thumb:
     - what: rectangle
-      size: [5,5]
+      size: [9,6]
       where: 
         ref: main_C0_R1
+        shift: [0, 0]
+  _batt:
+    - what: rectangle
+      size: [6,6]
+      where: 
+        ref: main_C1_R1
         shift: [0, 0]
   test_switch_cutouts:
     - what: rectangle
@@ -37,6 +45,7 @@ outlines:
   test_case: [
     test_pcb_edgecut,
     -_connector_thumb,
+    -_batt,
   ]
 
 
@@ -57,6 +66,7 @@ pcbs:
         what: f_choc
         where: 
           ref: main_C0_R0
+          rotate: 180
         params:
           from: C0
           to: C0R0D
@@ -66,42 +76,90 @@ pcbs:
         where: 
           ref: main_C0_R0
           shift: [diode_x,diode_y]
-          rotate: 0
+          rotate: 180
         params:
           from: C0R0D
-          to: R0      
+          to: R0
+      C1R0:
+        what: f_choc
+        where: 
+          ref: main_C1_R0
+          rotate: 0
+        params:
+          from: C1
+          to: C1R0D
+          label: C1R0
+      C1R0diode:
+        what: f_diode
+        where: 
+          ref: main_C1_R0
+          shift: [diode_x,diode_y]
+          rotate: 0
+        params:
+          from: C1R0D
+          to: R0     
       connector_thumb:
         what: f_jstsh5
         where: 
           ref: main_C0_R1
-          shift: [-5,5.5]
-          rotate: 270
+          shift: [0,0]
+          rotate: 180
         params:
           side: B  
+      batt:
+        what: f_jstsh2
+        where: 
+          ref: main_C1_R1
+          shift: [0, 0]
+          rotate: 180
+        params:          
+          pos: BSLI
+          neg: GND
       logo: 
         what: f_text
         where: 
-          ref: main_C0_R1
+          ref: main_C1_R1
           shift: [cx/2-1.5,0]
           rotate: 270
         params:
           text: "Flactyl 4.0 (test)"
           side: F
+      slider:
+        what: f_slider
+        where: 
+          ref: main_C2_R1
+          shift: [0, 0]
+          rotate: 90
+        params:          
+          one: RAW
+          two: BSLI
+          three: three
+      smdbutton:
+        what: f_smdbutton
+        where: 
+          ref: main_C2_R0
+          shift: [0, 0]
+          rotate: 0
+        params:          
+          one: GND
+          two: RST  
       x:
         what: f_text
         where: 
           ref: main_C0_R0
-          shift: [20,0]          
+          shift: [60,0]          
         params:
           text: "x"
-          side: F            
+          side: F 
+          layer: Fab
       y:
         what: f_text
         where: 
           ref: main_C0_R0
-          shift: [0,20]          
+          shift: [0,20]
         params:
           text: "y"
           side: F
+          layer: Fab
 
         

@@ -1,6 +1,6 @@
 module.exports = {
     params: {
-        designator: 'JST',
+        designator: 'JC',
         side: 'B',
         C5: {type: 'net', value: 'C5'},
         C6: {type: 'net', value: 'C6'},
@@ -12,14 +12,14 @@ module.exports = {
       return `
   (footprint "JST_SH_SM05B-SRSS-TB_1x05-1MP_P1.00mm_Horizontal" (generator pcbnew)
   (layer "${p.side}.Cu")
-  ${p.at /* parametric position */}
   (tedit 62B572A3)
   (descr "JST SH series connector, SM05B-SRSS-TB (http://www.jst-mfg.com/product/pdf/eng/eSH.pdf), generated with kicad-footprint-generator")
   (tags "connector JST SH top entry")
   (property "Sheetfile" "main.kicad_sch")
   (property "Sheetname" "")
   (attr smd)
-  (fp_text reference "J1" (at 0 -3.98) (layer "${p.side}.Fab") hide
+  ${p.at /* parametric position */}
+  (fp_text reference "${p.ref}" (at 0 -3.98) (layer "${p.side}.Fab") hide
     (effects (font (size 1 1) (thickness 0.15))))
   (fp_text user "R2" (at 2.4 -5 ${p.rot+90} unlocked) (layer "${p.side}.SilkS") (effects (font (size 1 1) (thickness 0.15))))
   (fp_text user "R1" (at 1.2 -5 ${p.rot+90} unlocked) (layer "${p.side}.SilkS") (effects (font (size 1 1) (thickness 0.15))))

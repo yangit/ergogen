@@ -28,15 +28,9 @@ Object.keys(right.points.zones.main.columns).forEach((key) => {
 // reverse units
 right.units.rR=-1
 right.units.fR=180
-// Object.keys(right.units).forEach((key) => {
-//     if (key.endsWith('R')) {
-//         right.units[key] = `(${right.units[key]})*-1`
-//     }
-// }
-// )
+
 right.pcbs = { right: left.pcbs.left };
 
-// ['C0R0', 'C0R1', 'C0R2'].forEach(console.log);
 ['C0R0', 'C0R1', 'C0R2', 'C2R0', 'C3R0', 'C3R1'].forEach((key) => {
     _.set(right, `pcbs.right.footprints.${key}.where.rotate`, _.get(right, `pcbs.right.footprints.${key}.where.rotate`, 0) - 180)
     _.set(right, `pcbs.right.footprints.${key}diode.where.rotate`, _.get(right, `pcbs.right.footprints.${key}diode.where.rotate`, 0) - 180)
@@ -66,6 +60,6 @@ right.pcbs.right.outlines.keycaps.outline = `right_${left.pcbs.left.outlines.key
 
 console.log(left);
 fs.writeFileSync(rightFile, yaml.dump(right))
-// console.log(right);
+
 
 

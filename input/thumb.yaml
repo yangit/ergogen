@@ -227,7 +227,8 @@ pcbs:
           shift: [20,0]          
         params:
           text: "x"
-          side: F            
+          side: F     
+          layer: Fab       
       y:
         what: f_text
         where: 
@@ -236,5 +237,6 @@ pcbs:
         params:
           text: "y"
           side: F
+          layer: Fab
 
         
