@@ -397,7 +397,7 @@ pcbs:
           shift:
             - 0
             - '-cy/2+stagger_middle+stagger_index+stagger_index2+slider_offset'
-          rotate: 180
+          rotate: 0
         params:
           one: RAW
           two: BSLI
@@ -409,7 +409,7 @@ pcbs:
           shift:
             - smdbutton_offset_x*rR
             - cy/2+smdbutton_offset_y
-          rotate: 270
+          rotate: 180
         params:
           one: GND
           two: RST
@@ -441,7 +441,7 @@ pcbs:
           shift:
             - 0
             - '-jst5offset'
-          rotate: '-90+fR'
+          rotate: 270+fR
         params:
           side: B
       mount_hole1:

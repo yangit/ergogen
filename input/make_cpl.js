@@ -25,7 +25,7 @@ fs.readdirSync(__dirname).filter((file) => file.endsWith('.yaml')).forEach(yamlF
     const output_back = [`Designator,Mid X,Mid Y,Layer,Rotation`, ...[...pcbText.matchAll(refRegexp)].filter((match) => bomItems.includes(match[2])).map(match => {
         const [, x, y, rot] = match[1].split(' ');
         const itemRef = match[2];
-        return `${itemRef}, ${myformat.format(x)}mm, ${myformat.format(zeroToZero(y * -1))}mm, Bottom, ${rot-180}`
+        return `${itemRef}, ${myformat.format(x)}mm, ${myformat.format(zeroToZero(y * -1))}mm, Bottom, ${rot+180}`
     })]
 
     // fs.writeFileSync(`${__dirname}/../output/${file}/${file}_cpl.csv`, output_front.join('\n'))
