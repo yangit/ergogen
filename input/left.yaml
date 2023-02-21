@@ -477,7 +477,7 @@ pcbs:
         where: 
           ref: main_ring_bottom
           shift: [0, -cy/2+stagger_middle+stagger_index+stagger_index2+slider_offset]
-          rotate: 0
+          rotate: 180
         params:          
           one: RAW
           two: BSLI
