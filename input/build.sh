@@ -32,7 +32,7 @@ for PCB in ${PCBS[@]}; do
 done
 cd ~/Dropbox/github/keyboard/ergogen
 node input/make_cpl.js
-open -n /Applications/KiCad/Pcbnew.app/ --args ~/Dropbox/github/keyboard/ergogen/output/left/left.kicad_pcb
+open -n /Applications/KiCad/Pcbnew.app/ --args ~/Dropbox/github/keyboard/ergogen/output/test/test.kicad_pcb
 rm -rf ~/Dropbox/github/keyboard/ergogen/output/outlines
 rm -rf ~/Dropbox/github/keyboard/ergogen/output/pcbs
 

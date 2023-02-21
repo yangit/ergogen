@@ -494,7 +494,7 @@ pcbs:
             - logox*rR
             - '-cy/2'
         params:
-          text: Flactyl 4.0 (left)
+          text: Flactyl 4.1 (left)
           side: F
 outlines:
   _nnano_ext:
@@ -645,7 +645,6 @@ outlines:
       fillet: 1.49
   right_case:
     - right_pcb_edgecut
-    - '-_nnano'
     - '-_nnano_ext'
     - '-_batt'
     - '-_connector_thumb'

@@ -48,13 +48,7 @@
           "min_clearance": 0.508
         }
       },
-      "diff_pair_dimensions": [
-        {
-          "gap": 0.0,
-          "via_gap": 0.0,
-          "width": 0.0
-        }
-      ],
+      "diff_pair_dimensions": [],
       "drc_exclusions": [],
       "meta": {
         "filename": "board_design_settings.json",
@@ -81,7 +75,7 @@
         "item_on_disabled_layer": "error",
         "items_not_allowed": "error",
         "length_out_of_range": "error",
-        "lib_footprint_issues": "ignore",
+        "lib_footprint_issues": "warning",
         "lib_footprint_mismatch": "warning",
         "malformed_courtyard": "error",
         "microvia_drill_out_of_range": "error",
@@ -170,15 +164,8 @@
           "td_width_to_size_filter_ratio": 0.9
         }
       ],
-      "track_widths": [
-        0.0
-      ],
-      "via_dimensions": [
-        {
-          "diameter": 0.0,
-          "drill": 0.0
-        }
-      ],
+      "track_widths": [],
+      "via_dimensions": [],
       "zones_allow_external_fillets": false
     },
     "layer_presets": [],
@@ -228,31 +215,11 @@
       },
       {
         "netclass": "Default",
-        "pattern": "C0"
+        "pattern": "f"
       },
       {
         "netclass": "Default",
-        "pattern": "C0R0D"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "C0R0"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "R0"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "C1"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "C1R0D"
-      },
-      {
-        "netclass": "Default",
-        "pattern": "C1R0"
+        "pattern": "t"
       },
       {
         "netclass": "Default",
@@ -261,6 +228,10 @@
       {
         "netclass": "Default",
         "pattern": "C6"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "R0"
       },
       {
         "netclass": "Default",
@@ -280,7 +251,7 @@
       },
       {
         "netclass": "Default",
-        "pattern": "Flactyl 4.0 (test)"
+        "pattern": "RST"
       },
       {
         "netclass": "Default",
@@ -292,7 +263,23 @@
       },
       {
         "netclass": "Default",
-        "pattern": "RST"
+        "pattern": "thre"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "C5R0D"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "C5R0"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "C5R1D"
+      },
+      {
+        "netclass": "Default",
+        "pattern": "C5R1"
       },
       {
         "netclass": "Default",

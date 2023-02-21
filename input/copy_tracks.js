@@ -8,7 +8,6 @@ fs.readdirSync(routed).filter((file) => file.endsWith(extension)).forEach(file =
     const fileContents=fs.readFileSync(`${routed}/${file}`).toString('utf8').split('\n')
     const segmentIndex = fileContents.findIndex(line => line.startsWith('  (segment (start'));
     const segments = fileContents.slice(segmentIndex, fileContents.length)
-
     
     const pcbFilePath = `${pcbs}/${file}`
     const pcbFile = fs.readFileSync(pcbFilePath).toString('utf8').split('\n')

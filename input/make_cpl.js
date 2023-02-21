@@ -8,6 +8,7 @@ var myformat = new Intl.NumberFormat('en-US', {
 });
 
 const zeroToZero = (num)=>num===0?0:num
+const normalizeDeg = (deg) =>(deg + 3600) % 360
 
 fs.readdirSync(__dirname).filter((file) => file.endsWith('.yaml')).forEach(yamlFileName => {
     const file = yamlFileName.substring(0, yamlFileName.length - 5)
@@ -22,10 +23,12 @@ fs.readdirSync(__dirname).filter((file) => file.endsWith('.yaml')).forEach(yamlF
         const itemRef = match[2];
         return `${itemRef}, ${myformat.format(x)}mm, ${myformat.format(y)}mm, Bottom, ${rot}`
     })]
+    console.log(bomItems);
+    
     const output_back = [`Designator,Mid X,Mid Y,Layer,Rotation`, ...[...pcbText.matchAll(refRegexp)].filter((match) => bomItems.includes(match[2])).map(match => {
         const [, x, y, rot] = match[1].split(' ');
         const itemRef = match[2];
-        return `${itemRef}, ${myformat.format(x)}mm, ${myformat.format(zeroToZero(y * -1))}mm, Bottom, ${rot+180}`
+        return `${itemRef}, ${myformat.format(x)}mm, ${myformat.format(zeroToZero(y * -1))}mm, Bottom, ${normalizeDeg(parseInt(rot,10)*-1+180)}`
     })]
 
     // fs.writeFileSync(`${__dirname}/../output/${file}/${file}_cpl.csv`, output_front.join('\n'))

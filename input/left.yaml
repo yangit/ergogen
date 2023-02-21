@@ -164,7 +164,7 @@ outlines:
     left_pcb_edgecut,    
     #-left_switch_cutouts,
     #-left_keycaps,
-    -_nnano,
+    #-_nnano,
     -_nnano_ext,
     -_batt,
     -_connector_thumb,
