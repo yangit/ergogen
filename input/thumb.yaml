@@ -23,28 +23,22 @@ points:
 outlines:
   _connector_thumb:
     - what: rectangle
-      size: [connector_depth+connector_extension,10]
+      size: [connector_depth+connector_extension,22]
       where: 
         ref: main_C5_R1        
-        shift: [connector_extension/2-5.5, 5.5]
+        shift: [connector_extension/2-5.5, 0]
   _mount_hole1:
     - what: circle
       where:
-        ref: main_C6_R1
-        shift: [cx/2,-cy/2]
+        ref: main_C6_R0
+        shift: [cx/2,0]
       radius: mh_radius
   _mount_hole2:
     - what: circle
       where:
-        ref: main_C6_R1
-        shift: [cx/2-2,cy/2]
+        ref: main_C6_R2
+        shift: [cx/2,0]
       radius: mh_radius
-  _mount_hole3:
-    - what: circle
-      where:
-        ref: main_C6_R1
-        shift: [-cx/2+2,cy/2]
-      radius: 1
   thumb_switch_cutouts:
     - what: rectangle
       where: true
@@ -63,10 +57,8 @@ outlines:
     # -switch_cutouts,
     -_mount_hole1,
     -_mount_hole2,
-    -_mount_hole3,
     -_connector_thumb
   ]
-
 
 pcbs:
   thumb:
@@ -197,20 +189,13 @@ pcbs:
       mount_hole1:
         what: f_npth
         where:
-          ref: main_C6_R1
-          shift: [cx/2,-cy/2]
+          ref: main_C6_R0
+          shift: [cx/2,0]
       mount_hole2:
         what: f_npth
         where:
-          ref: main_C6_R1
-          shift: [cx/2-2,cy/2]
-      mount_hole3:
-        what: f_npth
-        where:
-          ref: main_C6_R1
-          shift: [-cx/2+2,cy/2]
-        params:
-          dia: 1
+          ref: main_C6_R2
+          shift: [cx/2,0]
       logo: 
         what: f_text
         where: 

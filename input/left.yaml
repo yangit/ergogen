@@ -16,8 +16,8 @@ units:
   logox: -2.5
   screw_ext_x: cx/2
   nnano_y: 33+3
-  nnano_y_ext: 10
-  nnano_ext_x_shift: 4.5
+  nnano_y_ext: 5
+  nnano_ext_x_shift: 0.5
   nnano_x: 18+3
   mh_radius: 1.1
   connector_depth: 7
@@ -59,14 +59,15 @@ outlines:
     - what: rectangle
       where: 
         ref: main_index2_home
-        shift: [nnano_ext_x_shift*rR,6.5+nnano_y_ext]
+        #shift: [0,6.5]
+        shift: [nnano_ext_x_shift*rR,13]
       size: [nnano_x, nnano_y+nnano_y_ext*2]
   _nnano:
     - what: rectangle
       where: 
         ref: main_index2_home
-        shift: [0,6.5]
-      size: [18+3, nnano_y]
+        shift: [0,8]
+      size: [nnano_x, nnano_y]
   left_switch_cutouts:
     - what: rectangle
       where: true
@@ -119,20 +120,14 @@ outlines:
     - what: circle
       where:
         ref: main_index_bottom
-        shift: [cx*rR/2,-cy/2]
+        shift: [cx*rR/2,0]
       radius: mh_radius
   _mount_hole6:
     - what: circle
       where:
-        ref: main_index_top
-        shift: [cx*rR/2,cy/2-1.5]
+        ref: main_index_home
+        shift: [(cx-5)*rR/2,cy/2]
       radius: mh_radius
-  _screw_ext:
-    - what: circle
-      where: 
-        ref: main_index_top
-        shift: [screw_ext_x*rR,cy/2-1.5]
-      radius: 3 
   _bottom_ext:
     - what: rectangle
       where: 
@@ -152,7 +147,6 @@ outlines:
       size: [cx+4,cy]
   _pcb_outline_raw: [      
       _perimeter,  
-      _screw_ext,    
       _bottom_ext,      
       -_pinky_cut,  
   ]          
@@ -173,9 +167,14 @@ outlines:
     -_mount_hole3,
     -_mount_hole4,
     -_mount_hole5,
-    -_mount_hole6        
+    -_mount_hole6,
+     
   ] 
-
+  left_case_nano: [      
+    left_pcb_edgecut,    
+    -_nnano,
+  
+  ] 
 
 pcbs:
   left:
@@ -540,12 +539,12 @@ pcbs:
         what: f_npth
         where:
           ref: main_index_bottom
-          shift: [cx*rR/2,-cy/2]
+          shift: [cx*rR/2,0]
       mount_hole6:
         what: f_npth
         where:
-          ref: main_index_top
-          shift: [cx*rR/2,cy/2-1.5]
+          ref: main_index_home
+          shift: [(cx-5)*rR/2,cy/2]
       logo: 
         what: f_text
         where: 

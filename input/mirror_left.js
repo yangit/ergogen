@@ -31,7 +31,7 @@ right.units.fR=180
 
 right.pcbs = { right: left.pcbs.left };
 
-['C0R0', 'C0R1', 'C0R2', 'C2R0', 'C3R0', 'C3R1'].forEach((key) => {
+['C0R0', 'C0R1', 'C0R2', 'C2R0', 'C3R0', 'C3R1', 'C4R2'].forEach((key) => {
     _.set(right, `pcbs.right.footprints.${key}.where.rotate`, _.get(right, `pcbs.right.footprints.${key}.where.rotate`, 0) - 180)
     _.set(right, `pcbs.right.footprints.${key}diode.where.rotate`, _.get(right, `pcbs.right.footprints.${key}diode.where.rotate`, 0) - 180)
     _.set(right, `pcbs.right.footprints.${key}diode.where.shift`, _.get(right, `pcbs.right.footprints.${key}diode.where.shift`, [0,0]).map(shift=>`-1*(${shift})`));
@@ -47,6 +47,13 @@ Object.keys(left.outlines).forEach(outline=>{
     }
 })
 right.outlines.right_case=right.outlines.right_case.map((outline)=>{
+    if (outline.startsWith('left_')) {
+        return `right_${outline.substr(5)}`
+    } else {
+        return outline
+    }
+})
+right.outlines.right_case_nano = right.outlines.right_case_nano.map((outline) => {
     if (outline.startsWith('left_')) {
         return `right_${outline.substr(5)}`
     } else {
