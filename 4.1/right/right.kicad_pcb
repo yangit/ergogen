@@ -35,19 +35,6 @@
   )
 
   (setup
-    (stackup
-      (layer "F.SilkS" (type "Top Silk Screen"))
-      (layer "F.Paste" (type "Top Solder Paste"))
-      (layer "F.Mask" (type "Top Solder Mask") (thickness 0.01))
-      (layer "F.Cu" (type "copper") (thickness 0.035))
-      (layer "dielectric 1" (type "core") (thickness 1.51) (material "FR4") (epsilon_r 4.5) (loss_tangent 0.02))
-      (layer "B.Cu" (type "copper") (thickness 0.035))
-      (layer "B.Mask" (type "Bottom Solder Mask") (thickness 0.01))
-      (layer "B.Paste" (type "Bottom Solder Paste"))
-      (layer "B.SilkS" (type "Bottom Silk Screen"))
-      (copper_finish "None")
-      (dielectric_constraints no)
-    )
     (pad_to_mask_clearance 0.05)
     (pcbplotparams
       (layerselection 0x00010fc_ffffffff)
@@ -79,7 +66,7 @@
       (subtractmaskfromsilk false)
       (outputformat 1)
       (mirror false)
-      (drillshape 0)
+      (drillshape 1)
       (scaleselection 1)
       (outputdirectory "")
     )
@@ -986,8 +973,8 @@
       (net 27 "GND") (tstamp 5c5076e0-8609-47cf-8023-331dccd634f5))
     (pad "2" smd roundrect (at 0.5 2 90) (size 0.6 1.55) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.25)
       (net 30 "BSLI") (tstamp ab40141c-2b6a-4a7f-a323-0952ec2c452d))
-    (pad "MP" smd roundrect (at -1.8 -1.875 90) (size 1.2 1.8) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.2083333333) (tstamp 0e28481f-74f2-43df-ae4c-749c1d755eb3))
-    (pad "MP" smd roundrect (at 1.8 -1.875 90) (size 1.2 1.8) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.2083333333) (tstamp 7dfa270a-19e5-4a0e-acb8-6b1d8de083c0))
+    (pad "MP" smd roundrect (at -1.8 -1.875 90) (size 1.2 1.8) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.208333) (tstamp 0e28481f-74f2-43df-ae4c-749c1d755eb3))
+    (pad "MP" smd roundrect (at 1.8 -1.875 90) (size 1.2 1.8) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.208333) (tstamp 7dfa270a-19e5-4a0e-acb8-6b1d8de083c0))
   )
 
   (footprint "b3u-1000P" (layer "B.Cu")
@@ -1389,8 +1376,8 @@
       (net 5 "R1") (tstamp 1e39d66e-b293-44b7-b387-b04760bd98d1))
     (pad "5" smd roundrect (at 2 2 90) (size 0.6 1.55) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.25)
       (net 7 "R2") (tstamp a576c70a-aebb-4729-864d-2b321bd82fa2))
-    (pad "MP" smd roundrect (at -3.3 -1.875 90) (size 1.2 1.8) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.2083333333) (tstamp 79c964bd-37f9-409d-aa4f-7565ab0078c3))
-    (pad "MP" smd roundrect (at 3.3 -1.875 90) (size 1.2 1.8) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.2083333333) (tstamp cdb2531f-aa5a-4b53-bf10-c6a6feefff9f))
+    (pad "MP" smd roundrect (at -3.3 -1.875 90) (size 1.2 1.8) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.208333) (tstamp 79c964bd-37f9-409d-aa4f-7565ab0078c3))
+    (pad "MP" smd roundrect (at 3.3 -1.875 90) (size 1.2 1.8) (layers "B.Cu" "B.Paste" "B.Mask") (roundrect_rratio 0.208333) (tstamp cdb2531f-aa5a-4b53-bf10-c6a6feefff9f))
   )
 
   (footprint "NiceNano" (layer "B.Cu")

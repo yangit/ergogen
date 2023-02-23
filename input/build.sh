@@ -4,7 +4,6 @@ PCBS=("left" "right" "thumb" "test")
 LAYERS=F.Cu,F.Paste,F.SilkS,F.Mask,B.Cu,B.Paste,B.SilkS,B.Mask,Edge.Cuts
 
 mkdir -p ./output
-mkdir -p ./output/jlcpcb
 
 node input/mirror_left.js
 node input/sane_constants.js left.yaml thumb.yaml
