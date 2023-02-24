@@ -9,17 +9,22 @@ const assert = (exp, msg) => {
   }
 }
 
-const keyRegexp = /^(C\d+)(R\d+)$/
+const keyRegexp = /^(C\d+)_(R\d+)$/
 
 fs.readdirSync(__dirname).filter((file) => file.endsWith('.yaml')).forEach(file => {
+  console.log(file);
+  
 
     const doc = yaml.load(fs.readFileSync(`${__dirname}/${file}`, 'utf8'));    
     Object.keys(doc.pcbs).forEach((pcb)=>{
       const keys = Object.keys(doc.pcbs[pcb].footprints).filter((footprintName)=>keyRegexp.test(footprintName))
+      console.log(keys);
+      
       keys.forEach((key=>{
+        console.log(key);
         assert(doc.pcbs[pcb].footprints[`${key}diode`],`diode missing for ${key}`)
         assert(doc.pcbs[pcb].footprints[key].params.from===key.match(keyRegexp)[1],`from is wrong for ${key}`)
-        assert(doc.pcbs[pcb].footprints[key].params.to===`${key}D`,`to is wrong for ${key}`)
+        assert(doc.pcbs[pcb].footprints[key].params.to === `${key}D`, `to is wrong(${doc.pcbs[pcb].footprints[key].params.to}) for ${key}D`)
         assert(doc.pcbs[pcb].footprints[key].params.label===key,`label is wrong for ${key}`)
         assert(doc.pcbs[pcb].footprints[`${key}diode`].params.from===`${key}D`,`diode from wrong for ${key}`)
         assert(doc.pcbs[pcb].footprints[`${key}diode`].params.to===key.match(keyRegexp)[2],`diode to wrong for ${key}`)

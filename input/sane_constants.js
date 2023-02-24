@@ -16,7 +16,7 @@ try {
     const docs = args.map(file=>yaml.load(fs.readFileSync(`${__dirname}/${process.argv[2]}`, 'utf8')));    
     
     const common = {}
-    console.log(docs.map(({units})=>units));
+    // console.log(docs.map(({units})=>units));
       docs.forEach(doc=>{
         Object.keys(doc.units).forEach((key)=>{
           if (typeof common[key]=== 'undefined') {

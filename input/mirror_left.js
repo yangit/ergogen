@@ -31,7 +31,7 @@ right.units.fR=180
 
 right.pcbs = { right: left.pcbs.left };
 
-['C0R0', 'C0R1', 'C0R2', 'C2R0', 'C3R0', 'C3R1', 'C4R2'].forEach((key) => {
+['C0_R0', 'C0_R1', 'C0_R2', 'C2_R0', 'C3_R0', 'C3_R1', 'C4_R2'].forEach((key) => {
     _.set(right, `pcbs.right.footprints.${key}.where.rotate`, _.get(right, `pcbs.right.footprints.${key}.where.rotate`, 0) - 180)
     _.set(right, `pcbs.right.footprints.${key}diode.where.rotate`, _.get(right, `pcbs.right.footprints.${key}diode.where.rotate`, 0) - 180)
     _.set(right, `pcbs.right.footprints.${key}diode.where.shift`, _.get(right, `pcbs.right.footprints.${key}diode.where.shift`, [0,0]).map(shift=>`-1*(${shift})`));
@@ -65,7 +65,7 @@ right.pcbs.right.outlines.case.outline = `right_${left.pcbs.left.outlines.case.o
 right.pcbs.right.outlines.keycaps.outline = `right_${left.pcbs.left.outlines.keycaps.outline .substr(5)}`
 
 
-console.log(left);
+// console.log(left);
 fs.writeFileSync(rightFile, yaml.dump(right))
 
 

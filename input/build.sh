@@ -5,6 +5,7 @@ LAYERS=F.Cu,F.Paste,F.SilkS,F.Mask,B.Cu,B.Paste,B.SilkS,B.Mask,Edge.Cuts
 
 mkdir -p ./output
 
+node input/gen_yaml.js
 node input/mirror_left.js
 node input/sane_constants.js left.yaml thumb.yaml
 node input/sane.js
@@ -24,10 +25,11 @@ for PCB in ${PCBS[@]}; do
     mv ../outlines/${PCB}_* ./
     mv ../pcbs/${PCB}.kicad_pcb ./
     cp ../../input/bom/${PCB}.csv ./${PCB}_bom.csv
+    mv ../../input/${PCB}.yaml ./
 done
 cd ~/Dropbox/github/keyboard/ergogen
 node input/make_cpl.js
-open -n /Applications/KiCad/Pcbnew.app/ --args ~/Dropbox/github/keyboard/ergogen/output/thumb/thumb.kicad_pcb
+open -n /Applications/KiCad/Pcbnew.app/ --args ~/Dropbox/github/keyboard/ergogen/output/left/left.kicad_pcb
 rm -rf ~/Dropbox/github/keyboard/ergogen/output/outlines
 rm -rf ~/Dropbox/github/keyboard/ergogen/output/pcbs
 
