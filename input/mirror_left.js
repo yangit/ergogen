@@ -61,7 +61,7 @@ Object.keys(left.outlines).forEach(outline => {
 right.pcbs.right.outlines.pcb_edgecut.outline = `right_${left.pcbs.left.outlines.pcb_edgecut.outline.substr(5)}`
 right.pcbs.right.outlines.case.outline = `right_${left.pcbs.left.outlines.case.outline.substr(5)}`
 right.pcbs.right.outlines.keycaps.outline = `right_${left.pcbs.left.outlines.keycaps.outline.substr(5)}`
-
+right.pcbs.right.footprints.logo.params.text = left.pcbs.left.footprints.logo.params.text.replace('left','right')
 fs.writeFileSync(rightFile, yaml.dump(right))
 
 
