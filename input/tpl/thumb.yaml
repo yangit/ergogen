@@ -14,7 +14,7 @@ yanGenerator:
 
 units:
   screw_nut_cutout: 3.1
-  screw_nut_cutout_l: 5
+  screw_nut_cutout_l: 7
   choc_cap_x: 17.5
   choc_cap_y: 16.5
   diode_x: 3.6

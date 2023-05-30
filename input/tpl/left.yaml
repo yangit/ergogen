@@ -33,7 +33,7 @@ yanGenerator:
 
 units:
   screw_nut_cutout: 3.1
-  screw_nut_cutout_l: 5
+  screw_nut_cutout_l: 7
   choc_cap_x: 17.5
   choc_cap_y: 16.5
   stagger_ring: cy
@@ -89,6 +89,12 @@ points:
           key:
             stagger: stagger_index2  
 outlines:
+  _nnano_mount:
+    - what: circle
+      where:
+        ref: main_C4_R1
+        shift: [7.6, -7.5]
+      radius: 1
   _nnano_ext:
     - what: rectangle
       where: 
@@ -164,7 +170,7 @@ outlines:
   ] 
   left_case_nano: [      
     left_pcb_edgecut,    
-    -_nnano,
+    -_nnano_mount,
   ]
   left_screw: [
     left_pcb_edgecut,
