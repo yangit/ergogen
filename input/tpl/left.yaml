@@ -41,6 +41,7 @@ units:
   stagger_index: -6
   stagger_index2: -3
   slider_offset: 3
+  switchCutoutForPrint: 13.8
   smdbutton_offset_x: 'cx/2-1'
   smdbutton_offset_y: -1.5
   nnano_offset: -10.5
@@ -112,7 +113,7 @@ outlines:
     - what: rectangle
       where: true
       asym: source
-      size: 14 # Plate cutouts are 14mm * 14mm for both MX and Choc
+      size: switchCutoutForPrint # Plate cutouts are 14mm * 14mm for both MX and Choc
       bound: false
   left_keycaps:
     - what: rectangle
