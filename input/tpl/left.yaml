@@ -2,8 +2,8 @@ yanGenerator:
   holes:
     - ref: main_C3_R1
       shift: [(cx-5)*rR/2,cy/2]
-    - ref: main_C3_R2
-      shift: [cx*rR/2,0]
+    # - ref: main_C3_R2
+    #   shift: [cx*rR/2,0]
     - ref: main_C2_R0
       shift: [-cx*rR/2,-cy/2]
     - ref: main_C2_R2
