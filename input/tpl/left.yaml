@@ -159,6 +159,13 @@ outlines:
     - what: outline
       name: _pcb_outline_raw
       fillet: 1.49
+  _pcb_outline_raw_with_keys:
+    - _perimeter
+    - _lower_ext
+  left_pcb_edgecut_with_keys:
+    - what: outline
+      name: _pcb_outline_raw_with_keys
+      fillet: 1.49
   left_case: [      
     left_pcb_edgecut,    
     #-left_switch_cutouts,
