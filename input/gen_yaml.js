@@ -13,11 +13,15 @@ fs.readdirSync(templates).filter((file) => file.endsWith(extension)).forEach(fil
         const holeName = `_gen_hole${index}`;
         const caseName = `${fileOnly}_case`;
         const screwName = `${fileOnly}_screw`;
+        const screwHolesName = `${fileOnly}_screw_holes`;
 
         const caseArray = json.outlines[caseName];
         delete json.outlines[caseName];
         const screwArray = json.outlines[screwName];
         delete json.outlines[screwName];
+        const screwHolesArray = json.outlines[screwHolesName];
+        delete json.outlines[screwHolesName];
+
         json.outlines[holeName] = [{
             what: 'circle',
             where: hole,
@@ -25,10 +29,11 @@ fs.readdirSync(templates).filter((file) => file.endsWith(extension)).forEach(fil
         }];
 
         caseArray.push(`-${holeName}`);
+        screwHolesArray.push(`${holeName}`);
 
-        screwArray.push(`-${holeName}lr`);
-        screwArray.push(`${holeName}sr`);
-        screwArray.push(`-${holeName}`);
+        screwArray.push(`${holeName}lr`);
+        screwArray.push(`-${holeName}sr`);
+        // screwArray.push(`-${holeName}`);
 
         json.outlines[`${holeName}lr`] = [{
             what: 'rectangle',
@@ -44,6 +49,7 @@ fs.readdirSync(templates).filter((file) => file.endsWith(extension)).forEach(fil
         json.outlines[`${fileOnly}_case`] = json.outlines[`${fileOnly}_case`]
         json.outlines[caseName] = caseArray;
         json.outlines[screwName] = screwArray;
+        json.outlines[screwHolesName] = screwHolesArray;
         json.pcbs[fileOnly].footprints[holeName] = {
             what: 'f_npth',
             where: hole,

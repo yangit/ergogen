@@ -174,7 +174,11 @@ outlines:
     -_nnano_mount,
   ]
   left_screw: [
-    left_pcb_edgecut,
+    # left_pcb_edgecut,
+  ]
+  left_screw_holes: [
+    _batt,
+    _connector_thumb,
   ]
 
 

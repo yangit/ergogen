@@ -61,8 +61,12 @@ outlines:
     -_connector_thumb
   ]
   thumb_screw: [
-    thumb_pcb_edgecut,
+    # thumb_pcb_edgecut,
   ]
+  thumb_screw_holes: [
+    _connector_thumb
+  ]
+  
 
 pcbs:
   thumb:
