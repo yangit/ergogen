@@ -48,7 +48,7 @@ Object.keys(left.outlines).forEach(outline => {
 });
 
 
-['right_case', 'right_case_nano', 'right_screw'].forEach((arrName) => {
+['right_case', 'right_case_nano', 'right_screw','_pcb_outline_raw_with_keys'].forEach((arrName) => {
     right.outlines[arrName] = right.outlines[arrName].map((outline) => {
         if (outline.startsWith('left_')) {
             return `right_${outline.substr(5)}`

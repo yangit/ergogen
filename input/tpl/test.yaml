@@ -1,6 +1,8 @@
 units:
-  choc_cap_x: 17.5
-  choc_cap_y: 16.5
+  # choc_cap_x: 17.5
+  # choc_cap_y: 16.5 
+  choc_cap_x: 18
+  choc_cap_y: 17
   diode_x: 3.6
   diode_y: -2.6
 points:  
