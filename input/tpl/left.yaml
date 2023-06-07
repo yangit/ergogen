@@ -311,7 +311,7 @@ pcbs:
           ref: main_C2_R2
           shift: [logox*rR,-cy/2]          
         params:
-          text: "Flactyl 4.1 (left)"
+          text: "Flactyl 4.2 (left)"
           side: F
           
 
