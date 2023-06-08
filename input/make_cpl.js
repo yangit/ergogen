@@ -9,8 +9,8 @@ var myformat = new Intl.NumberFormat('en-US', {
 
 const zeroToZero = (num) => num === 0 ? 0 : num
 const normalizeDeg = (deg) => (deg + 3600) % 360
-
-fs.readdirSync(__dirname).filter((file) => file.endsWith('.yaml')).forEach(yamlFileName => {
+console.log(`${__dirname}/../temp/`)
+fs.readdirSync(`${__dirname}/../temp/`).filter((file) => file.endsWith('.yaml')).forEach(yamlFileName => {
     const file = yamlFileName.substring(0, yamlFileName.length - 5)
     const bom = fs.readFileSync(`${__dirname}/bom/${file}.csv`, 'utf8')
     const bomItems = parse(bom, {
