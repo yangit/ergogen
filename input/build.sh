@@ -25,11 +25,13 @@ for PCB in ${PCBS[@]}; do
     mv ../outlines/${PCB}_* ./
     mv ../pcbs/${PCB}.kicad_pcb ./
     cp ../../input/bom/${PCB}.csv ./${PCB}_bom.csv
-    mv ../../input/${PCB}.yaml ./
+    mv ../../temp/${PCB}.yaml ./
 done
 cd $OUTDIR
 cd ..
 node input/make_cpl.js
+
+#open file for manual inspection
 open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/left/left.kicad_pcb
 rm -rf $OUTDIR/outlines
 rm -rf $OUTDIR/pcbs

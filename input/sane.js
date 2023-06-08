@@ -11,8 +11,8 @@ const assert = (exp, msg) => {
 
 const keyRegexp = /^(C\d+)_(R\d+)$/
 
-fs.readdirSync(__dirname).filter((file) => file.endsWith('.yaml')).forEach(file => {
-  const doc = yaml.load(fs.readFileSync(`${__dirname}/${file}`, 'utf8'));
+fs.readdirSync(`${__dirname}/../temp/`).filter((file) => file.endsWith('.yaml')).forEach(file => {
+  const doc = yaml.load(fs.readFileSync(`${__dirname}/../temp/${file}`, 'utf8'));
   Object.keys(doc.pcbs).forEach((pcb) => {
     const keys = Object.keys(doc.pcbs[pcb].footprints).filter((footprintName) => keyRegexp.test(footprintName))
     keys.forEach((key => {

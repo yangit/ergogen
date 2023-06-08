@@ -2,8 +2,8 @@ const yaml = require('js-yaml');
 const fs = require('fs');
 const _ = require('lodash');
 const { leftShift } = require('mathjs');
-const leftFile = `${__dirname}/left.yaml`;
-const rightFile = `${__dirname}/right.yaml`;
+const leftFile = `${__dirname}/../temp/left.yaml`;
+const rightFile = `${__dirname}/../temp/right.yaml`;
 
 
 

@@ -13,7 +13,7 @@ const args = [...process.argv]
 args.unshift()
 args.unshift()
 try {
-  const docs = args.map(file => yaml.load(fs.readFileSync(`${__dirname}/${process.argv[2]}`, 'utf8')));
+  const docs = args.map(file => yaml.load(fs.readFileSync(`${__dirname}/../temp/${process.argv[2]}`, 'utf8')));
 
   const common = {}
   // console.log(docs.map(({units})=>units));
