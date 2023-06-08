@@ -2,10 +2,8 @@ set -ex
 rm -rf ./output
 PCBS=("left" "right" "thumb" "test")
 LAYERS=F.Cu,F.Paste,F.SilkS,F.Mask,B.Cu,B.Paste,B.SilkS,B.Mask,Edge.Cuts
-OUTDIR=~/Dropbox/github/flactyl/pcb/ergogen/output
-
+OUTDIR=$(readlink -f "./output")
 mkdir -p ./output
-
 node input/gen_yaml.js
 node input/mirror_left.js
 node input/sane_constants.js left.yaml thumb.yaml
