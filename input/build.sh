@@ -4,14 +4,15 @@ PCBS=("left" "right" "thumb" "test")
 LAYERS=F.Cu,F.Paste,F.SilkS,F.Mask,B.Cu,B.Paste,B.SilkS,B.Mask,Edge.Cuts
 OUTDIR=$(readlink -f "./output")
 mkdir -p ./output
+mkdir -p ./temp
 node input/gen_yaml.js
 node input/mirror_left.js
 node input/sane_constants.js left.yaml thumb.yaml
 node input/sane.js
-node src/cli.js ./input/left.yaml -o output/
-node src/cli.js ./input/right.yaml -o output/
-node src/cli.js ./input/thumb.yaml -o output/
-node src/cli.js ./input/test.yaml -o output/
+node src/cli.js ./temp/left.yaml -o output/
+node src/cli.js ./temp/right.yaml -o output/
+node src/cli.js ./temp/thumb.yaml -o output/
+node src/cli.js ./temp/test.yaml -o output/
 node ./input/copy_tracks.js
 pkill -x pcbnew || true
 

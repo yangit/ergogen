@@ -3,6 +3,8 @@ const yaml = require('js-yaml');
 const _ = require('lodash');
 const templates = `${__dirname}/tpl`;
 const output = `${__dirname}`;
+const tmp = `${__dirname}/../temp`;
+
 const keyReg = /C(\d+)_R(\d+)/
 const extension = '.yaml'
 fs.readdirSync(templates).filter((file) => file.endsWith(extension)).forEach(file => {
@@ -86,5 +88,5 @@ fs.readdirSync(templates).filter((file) => file.endsWith(extension)).forEach(fil
         }
 
     })
-    fs.writeFileSync(`${output}/${file}`, yaml.dump(json, { noRefs: true }))
+    fs.writeFileSync(`${tmp}/${file}`, yaml.dump(json, { noRefs: true }))
 });
