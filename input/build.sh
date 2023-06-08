@@ -35,6 +35,7 @@ node input/make_cpl.js
 open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/left/left.kicad_pcb
 rm -rf $OUTDIR/outlines
 rm -rf $OUTDIR/pcbs
+rm -rf ./temp
 
 
 echo "\n\n\nAll done"
