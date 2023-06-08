@@ -35,11 +35,11 @@ for PCB in ${PCBS[@]}; do
     mv ./temp/${PCB}.yaml $OUTDIR/$PCB
 done
 
-# #open file for manual inspection
-# open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/left/left.kicad_pcb
-# rm -rf $OUTDIR/outlines
-# rm -rf $OUTDIR/pcbs
-# rm -rf ./temp
+#open file for manual inspection
+open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/left/left.kicad_pcb
+rm -rf $OUTDIR/outlines
+rm -rf $OUTDIR/pcbs
+rm -rf ./temp
 
 
 echo "\n\n\nAll done"
