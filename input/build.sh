@@ -36,7 +36,7 @@ for PCB in ${PCBS[@]}; do
 done
 
 #open file for manual inspection
-open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/left/left.kicad_pcb
+open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/thumb/thumb.kicad_pcb
 rm -rf $OUTDIR/outlines
 rm -rf $OUTDIR/pcbs
 rm -rf ./temp

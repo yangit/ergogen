@@ -43,8 +43,8 @@ outlines:
     - what: rectangle
       size: [connector_depth+connector_extension,22]
       where: 
-        ref: main_C5_R1        
-        shift: [connector_extension/2-5.5, 0]
+        ref: main_C5_R1
+        shift: [-cx/2+(connector_depth+connector_extension)/2, 0]
   thumb_switch_cutouts:
     - what: rectangle
       where: true
