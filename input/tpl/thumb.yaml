@@ -96,7 +96,7 @@ pcbs:
         what: f_jstsh5
         where: 
           ref: main_C5_R1
-          shift: [-5,5.5]
+          shift: [-5,4.5]
           rotate: 270
         params:
           side: B
