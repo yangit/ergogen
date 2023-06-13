@@ -44,14 +44,14 @@ units:
   stagger_index2: -3
   slider_offset: 3
   switchCutoutForPrint: 13.8
-  smdbutton_offset_x: 'cx/2-1'
-  smdbutton_offset_y: -1.5
+  smdbutton_offset_x: 'cx/2-3.5'
+  smdbutton_offset_y: '-cy/2+3'
   nnano_offset: -10.5
   diode_x: 3.6
   diode_y: -2.6
   jst5offset: 5.75
   pinky_cut: '2-cx'
-  logox: -2.5
+  logox: 0.5
   screw_ext_x: cx/2
   nnano_y: 33+3
   nnano_y_ext: 5
@@ -59,7 +59,7 @@ units:
   nnano_x: 18+3
   mh_radius: 1.1
   connector_depth: 7
-  connector_extension: 6  
+  connector_extension: 8  
   rR: 1 # will be -1 in right
   fR: 0 # will be 180 in right
 points:  
@@ -144,12 +144,12 @@ outlines:
       where: 
         ref: main_C1_R1
         shift: [connector_extension*rR/2, -jst5offset]
-  _lower_ext:
-    - what: rectangle
-      where: 
-        ref: main_C2_R2
-        shift: [0,stagger_index+stagger_index2]
-      size: [cx*3,cy]  
+  # _lower_ext:
+  #   - what: rectangle
+  #     where: 
+  #       ref: main_C2_R2
+  #       shift: [0,stagger_index+stagger_index2]
+  #     size: [cx*3,cy]  
   _pinky_cut:
     - what: rectangle
       where:
@@ -162,8 +162,7 @@ outlines:
       asym: source
       size: [cx+4,cy]
   _pcb_outline_raw: [      
-      _perimeter,  
-      _lower_ext,      
+      _perimeter,     
       -_pinky_cut,  
   ]          
   left_pcb_edgecut:
@@ -172,7 +171,6 @@ outlines:
       fillet: 1.49
   _pcb_outline_raw_with_keys:
     - _perimeter
-    - _lower_ext
     - '-_pinky_cut'
     - left_keycaps
   left_pcb_edgecut_with_keys:
@@ -181,13 +179,9 @@ outlines:
       fillet: 1.49
   left_case: [      
     left_pcb_edgecut,    
-    #-left_switch_cutouts,
-    #-left_keycaps,
-    #-_nnano,
     -_nnano_ext,
     -_batt,
-    -_connector_thumb,
-     
+    -_connector_thumb,     
   ] 
   left_case_nano: [      
     left_pcb_edgecut,    
@@ -283,9 +277,9 @@ pcbs:
       smdbutton:
         what: f_smdbutton
         where: 
-          ref: main_C2_R0
-          shift: [smdbutton_offset_x*rR, cy/2+smdbutton_offset_y]
-          rotate: 180
+          ref: main_C1_R0
+          shift: [smdbutton_offset_x*rR, smdbutton_offset_y]
+          rotate: 90
         params:          
           one: GND
           two: RST          
@@ -318,7 +312,7 @@ pcbs:
         what: f_text
         where: 
           ref: main_C2_R2
-          shift: [logox*rR,-cy/2]          
+          shift: [logox*rR,-cy/2+1]          
         params:
           text: "Flactyl 5.0 (left)"
           side: F

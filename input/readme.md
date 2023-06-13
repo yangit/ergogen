@@ -18,3 +18,8 @@
 - select color
 - select assembly
 - select bottom side
+
+## New footprints
+
+Are taken from EasyEda online IDE by JLCPCB
+That guarantees that when we order parts SMT service they will solder it in correct direction.
