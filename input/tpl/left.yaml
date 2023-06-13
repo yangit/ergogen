@@ -42,14 +42,19 @@ units:
   stagger_middle: 3
   stagger_index: -6
   stagger_index2: -3
-  slider_offset: 3
   switchCutoutForPrint: 13.8
-  smdbutton_offset_x: 'cx/2-3.5'
+
+  batt_y_offset: -4
+  batt_x_offset: -4
+  smdbutton_offset_x: 'cx/2-6.25'
   smdbutton_offset_y: '-cy/2+3'
+
   nnano_offset: -10.5
   diode_x: 3.6
   diode_y: -2.6
-  jst5offset: 5.75
+
+  jst5_y_offset: 5.75
+  jst5_x_offset: -4
   pinky_cut: '2-cx'
   logox: 0.5
   screw_ext_x: cx/2
@@ -57,6 +62,7 @@ units:
   nnano_y_ext: 5
   nnano_ext_x_shift: 0.5
   nnano_x: 18+3
+  slide_y_size: 12
   mh_radius: 1.1
   connector_depth: 7
   connector_extension: 8  
@@ -136,14 +142,20 @@ outlines:
     - what: rectangle
       size: [connector_depth+connector_extension,7]
       where: 
-        ref: main_C0_R0
-        shift: [connector_extension*rR/2, -5.5]          
-  _connector_thumb:
+        ref: main_C1_R2
+        shift: [connector_extension*rR/2+batt_x_offset*rR, batt_y_offset]
+  _slide:
     - what: rectangle
-      size: [connector_depth+connector_extension,10]
+      size: [cx-2, slide_y_size]
       where: 
         ref: main_C1_R1
-        shift: [connector_extension*rR/2, -jst5offset]
+        shift: [0, -cy/2+slide_y_size/4]
+  _connector_thumb:
+    - what: rectangle
+      size: [connector_depth+connector_extension, 10]
+      where: 
+        ref: main_C2_R1
+        shift: [connector_extension*rR/2+jst5_x_offset*rR, -jst5_y_offset]
   # _lower_ext:
   #   - what: rectangle
   #     where: 
@@ -181,6 +193,7 @@ outlines:
     left_pcb_edgecut,    
     -_nnano_ext,
     -_batt,
+    -_slide,
     -_connector_thumb,     
   ] 
   left_case_nano: [      
@@ -192,6 +205,7 @@ outlines:
   ]
   left_screw_holes: [
     _batt,
+    _slide,
     _connector_thumb,
   ]
 
@@ -267,8 +281,8 @@ pcbs:
       slider:
         what: f_slider
         where: 
-          ref: main_C1_R2
-          shift: [0, -cy/2+stagger_middle+stagger_index+stagger_index2+slider_offset]
+          ref: main_C1_R1
+          shift: [-3*rR, 4-cy/2]
           rotate: 180
         params:          
           one: RAW
@@ -277,7 +291,7 @@ pcbs:
       smdbutton:
         what: f_smdbutton
         where: 
-          ref: main_C1_R0
+          ref: main_C1_R1
           shift: [smdbutton_offset_x*rR, smdbutton_offset_y]
           rotate: 90
         params:          
@@ -294,8 +308,8 @@ pcbs:
       batt:
         what: f_jstsh2
         where: 
-          ref: main_C0_R0
-          shift: [0, -5.5]
+          ref: main_C1_R2
+          shift: [batt_x_offset*rR, batt_y_offset]
           rotate: 270-fR
         params:          
           pos: BSLI
@@ -303,8 +317,8 @@ pcbs:
       connector_thumb:
         what: f_jstsh5
         where: 
-          ref: main_C1_R1
-          shift: [0, -jst5offset]
+          ref: main_C2_R1
+          shift: [jst5_x_offset*rR, -jst5_y_offset]
           rotate: 270+fR
         params:
           side: B

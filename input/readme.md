@@ -22,4 +22,5 @@
 ## New footprints
 
 Are taken from EasyEda online IDE by JLCPCB
-That guarantees that when we order parts SMT service they will solder it in correct direction.
+Than converted using [this](https://wokwi.com/tools/easyeda2kicad) tool
+That guarantees that when we order parts SMT service they will solder it in correct direction
