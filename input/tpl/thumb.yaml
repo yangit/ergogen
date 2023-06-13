@@ -53,6 +53,15 @@ outlines:
     - what: rectangle
       where: true
       size: [choc_cap_x,choc_cap_y]
+  thumb_keycaps_round:
+    - what: rectangle
+      where: true
+      asym: source
+      size:
+        - choc_cap_x-0.5
+        - choc_cap_y-0.5
+      bound: false
+      fillet: 1.49
   thumb_pcb_edgecut:
     - what: rectangle
       where: true

@@ -123,6 +123,15 @@ outlines:
       asym: source
       size: [choc_cap_x,choc_cap_y]
       bound: false
+  left_keycaps_round:
+    - what: rectangle
+      where: true
+      asym: source
+      size:
+        - choc_cap_x-0.5
+        - choc_cap_y-0.5
+      bound: false
+      fillet: 1.49
   _batt:
     - what: rectangle
       size: [connector_depth+connector_extension,7]
