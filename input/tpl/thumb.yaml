@@ -107,7 +107,7 @@ pcbs:
           shift: [cx/2-1.5,0]
           rotate: 270
         params:
-          text: "Flactyl 4.2 (thumb)"
+          text: "Flactyl 5.0 (thumb)"
           side: F
       x:
         what: f_text
