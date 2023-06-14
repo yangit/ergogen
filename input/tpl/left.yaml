@@ -227,7 +227,7 @@ pcbs:
       C4_R0:
         what: f_choc
         where: 
-          ref: main_C4_R0          
+          ref: main_C4_R0
         params:
           from: C4
           to: C4_R0D
@@ -237,14 +237,14 @@ pcbs:
         what: f_diode
         where: 
           ref: main_C4_R0
-          shift: [diode_x,diode_y]          
+          shift: [diode_x,diode_y]
         params:
           from: C4_R0D
           to: R0
       C4_R1:
         what: f_choc
         where: 
-          ref: main_C4_R1          
+          ref: main_C4_R1
         params:
           from: C4
           to: C4_R1D
@@ -254,10 +254,29 @@ pcbs:
         what: f_diode
         where: 
           ref: main_C4_R1
-          shift: [diode_x,diode_y]          
+          shift: [diode_x,diode_y]
         params:
           from: C4_R1D
-          to: R1          
+          to: R1      
+      C0_R3:
+        what: f_choc
+        where: 
+          ref: main_C0_R3
+          rotate: 180
+        params:
+          from: C0
+          to: C0_R3D
+          label: C0_R3
+          hotswap: false
+      C0_R3diode:
+        what: f_diode
+        where: 
+          ref: main_C0_R3
+          shift: [diode_x,diode_y]
+          rotate: 180
+        params:
+          from: C0_R3D
+          to: R3
       rotary:
         what: f_rotary
         where:
@@ -268,13 +287,13 @@ pcbs:
           from: C0
           to: C0R3D
           A: P2
-          B: P3         
+          B: P3
       rotaryDiode:
         what: f_diode
         where: 
           ref: main_C0_R3
           shift: [4,4]
-          rotate: 180      
+          rotate: 180
         params:
           from: C0R3D
           to: R3
