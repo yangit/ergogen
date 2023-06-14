@@ -283,8 +283,8 @@ pcbs:
         where: 
           ref: main_C1_R1
           shift: [-3*rR, 4-cy/2]
-          rotate: 180
-        params:          
+          rotate: fR
+        params:
           one: RAW
           two: BSLI
           three: three
