@@ -1,6 +1,116 @@
 
 # Ergogen
 
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+REFFER to ./input/readme.md first!
+REFFER to ./input/readme.md first!
+REFFER to ./input/readme.md first!
+REFFER to ./input/readme.md first!
+REFFER to ./input/readme.md first!
+REFFER to ./input/readme.md first!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```
+
+
+
 ***Ergonomic Keyboard Generator***
 
 <br>
