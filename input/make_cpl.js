@@ -29,17 +29,9 @@ const output_front = [`Designator,Mid X,Mid Y,Layer,Rotation`, ...[...pcbText.ma
 console.log(bomItems);
 
 const output_back = [`Designator,Mid X,Mid Y,Layer,Rotation`, ...[...pcbText.matchAll(refRegexp)].filter((match) => bomItems.includes(match[2])).map(match => {
-    // console.log(match);
-    
     const itemRef = match[2];
-    console.log(itemRef);
-    if (itemRef.startsWith('SS1') || itemRef.startsWith('SB1')){
-        console.log(itemRef,match[1],'MMM2222',match[2]);
-        
-    }
     const [, x, y, rot] = match[1].split(' ');
-    
-   
+
     return `${itemRef}, ${myformat.format(x)}mm, ${myformat.format(zeroToZero(y * -1))}mm, Bottom, ${normalizeDeg(parseInt(rot, 10) * -1 + 180)}`
 })]
 
