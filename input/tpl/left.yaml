@@ -285,7 +285,7 @@ pcbs:
         what: f_top_slider
         where: 
           ref: main_C1_R1
-          shift: [2.5*rR, 2-cy/2]
+          shift: [2.5*rR, 2.75-rR-cy/2]
           rotate: fR
         params:
           one: RAW

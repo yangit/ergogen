@@ -68,7 +68,8 @@ done
 
 #open file for manual inspection (again purely a UI thing, you can skip this step)
 # open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/thumb/thumb.kicad_pcb
-open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/left/left.kicad_pcb
+open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/right/right.kicad_pcb
+# open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/left/left.kicad_pcb
 # open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/test/test.kicad_pcb
 
 # cleanup
