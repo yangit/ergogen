@@ -298,7 +298,7 @@ pcbs:
           from: C0R3D
           to: R3
       slider:
-        what: f_slider
+        what: f_top_slider
         where: 
           ref: main_C1_R1
           shift: [-3*rR, 4-cy/2]

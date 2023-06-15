@@ -12,8 +12,11 @@ LAYERS=F.Cu,F.Paste,F.SilkS,F.Mask,B.Cu,B.Paste,B.SilkS,B.Mask,Edge.Cuts
 OUTDIR=$(readlink -f "./output")
 mkdir -p ./output
 mkdir -p ./temp
+
 # generate yaml file
-node input/gen_yaml.js
+node input/gen_yaml.js tpl/left.yaml
+node input/gen_yaml.js tpl/test.yaml
+node input/gen_yaml.js tpl/thumb.yaml
 
 # mirror left.yaml to right.yaml
 node input/mirror_left.js
@@ -32,9 +35,11 @@ node src/cli.js ./temp/test.yaml -o output/
 
 # Ergogen(this fork) does not support routing pcbs, so I have bypassed that by manually routing pcbs
 # saving them under ./input/routed and then copying the tracks from saved pcbs to the generated pcbs
+# if the elements layout similar I only need to make a small fixup to the tracks
 node ./input/copy_tracks.js
 
-# clos any existing pcbnew instances (purely a UI thing, you can skip this step, I use it to be able to see the changes) 
+# close any existing pcbnew instances (purely a UI thing, you can skip this step, 
+# I use it to be able to see the changes) 
 pkill -x pcbnew || true
 
 # generate step files
@@ -51,7 +56,10 @@ cd $OUTDIR
 cd ..
 
 # generate cpl files for SMT assembly (they are used to place components on the pcb)
-node input/make_cpl.js
+node input/make_cpl.js left.yaml
+node input/make_cpl.js right.yaml
+node input/make_cpl.js thumb.yaml
+node input/make_cpl.js test.yaml
 
 #move generated files to their respective folders
 for PCB in ${PCBS[@]}; do
@@ -60,7 +68,8 @@ done
 
 #open file for manual inspection (again purely a UI thing, you can skip this step)
 # open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/thumb/thumb.kicad_pcb
-open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/left/left.kicad_pcb
+# open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/left/left.kicad_pcb
+open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/test/test.kicad_pcb
 
 # cleanup
 rm -rf $OUTDIR/outlines

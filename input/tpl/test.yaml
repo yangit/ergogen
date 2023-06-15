@@ -1,3 +1,6 @@
+# This file is useful to check how components placement works in JLCPCB order confirmation page
+# One of the most common problems is that components are rotated in wrong direction
+
 units:
   # choc_cap_x: 17.5
   # choc_cap_y: 16.5 
@@ -194,7 +197,7 @@ pcbs:
           one: GND
           two: RST 
       slider1:
-        what: f_slider
+        what: f_top_slider
         where: 
           ref: main_C4_R0
           rotate: 0
@@ -203,7 +206,7 @@ pcbs:
           two: BSLI
           three: three
       slider2:
-        what: f_slider
+        what: f_top_slider
         where: 
           ref: main_C4_R1
           rotate: 90
@@ -212,7 +215,7 @@ pcbs:
           two: BSLI
           three: three
       slider3:
-        what: f_slider
+        what: f_top_slider
         where: 
           ref: main_C4_R2
           rotate: 180
@@ -221,7 +224,7 @@ pcbs:
           two: BSLI
           three: three
       slider4:
-        what: f_slider
+        what: f_top_slider
         where: 
           ref: main_C4_R3
           rotate: 270

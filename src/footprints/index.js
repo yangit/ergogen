@@ -1,7 +1,7 @@
 module.exports = {
-    
     f_magic_slider: require('../../input/footprints/magic_slider'),
-    f_slider: require('../../input/footprints/top_slider'),
+    f_slider: require('../../input/footprints/slider'),
+    f_top_slider: require('../../input/footprints/top_slider'),
     f_smdbutton: require('../../input/footprints/smdbutton'),
     f_nicenano: require('../../input/footprints/nicenano'),
     f_jstsh2: require('../../input/footprints/jstsh2'),
