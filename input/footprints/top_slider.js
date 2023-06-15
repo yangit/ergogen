@@ -7,7 +7,7 @@ module.exports = {
     },
     body: (p) => {
         return `
-    (footprint "easyeda:SW-SMD_SS-3235D-03-L2.00" (layer "B.Cu")
+    (footprint "SW-SMD_SS-3235D-03-L2.00" (layer "B.Cu")
     (attr smd)
     ${p.at /* parametric position */}
     (fp_text reference "${p.ref}" (at -0.087 -4.366) ${p.ref_hide} (layer "B.SilkS")

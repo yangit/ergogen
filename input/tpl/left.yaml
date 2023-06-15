@@ -46,14 +46,17 @@ units:
 
   batt_y_offset: -4
   batt_x_offset: -4
-  smdbutton_offset_x: 'cx/2-6.25'
+
+  slide_y_size: 12
+
+  smdbutton_offset_x: '-cx/2+4.5'
   smdbutton_offset_y: '-cy/2+3'
 
   nnano_offset: -10.5
   diode_x: 3.6
   diode_y: -2.6
 
-  jst5_y_offset: 5.75
+  jst5_y_offset: 5.50
   jst5_x_offset: -4
   pinky_cut: '2-cx'
   logox: 0.5
@@ -62,7 +65,7 @@ units:
   nnano_y_ext: 5
   nnano_ext_x_shift: 0.5
   nnano_x: 18+3
-  slide_y_size: 12
+
   mh_radius: 1.1
   connector_depth: 7
   connector_extension: 8  
@@ -257,51 +260,32 @@ pcbs:
           shift: [diode_x,diode_y]
         params:
           from: C4_R1D
-          to: R1      
-      C0_R3:
-        what: f_choc
-        where: 
-          ref: main_C0_R3
-          rotate: 180
-        params:
-          from: C0
-          to: C0_R3D
-          label: C0_R3
-          hotswap: false
-      C0_R3diode:
-        what: f_diode
-        where: 
-          ref: main_C0_R3
-          shift: [diode_x,diode_y]
-          rotate: 180
-        params:
-          from: C0_R3D
-          to: R3
+          to: R1
       rotary:
-        what: f_rotary
+        what: f_rotary_button
         where:
           ref: main_C0_R3
           shift: [0,0]
           rotate: 90
         params:
           from: C0
-          to: C0R3D
+          to: C0_R3D
           A: P2
           B: P3
       rotaryDiode:
         what: f_diode
         where: 
           ref: main_C0_R3
-          shift: [4,4]
+          shift: [4,-3]
           rotate: 180
         params:
-          from: C0R3D
+          from: C0_R3D
           to: R3
       slider:
         what: f_top_slider
         where: 
           ref: main_C1_R1
-          shift: [-3*rR, 4-cy/2]
+          shift: [2.5*rR, 2-cy/2]
           rotate: fR
         params:
           one: RAW

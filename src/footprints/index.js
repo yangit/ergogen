@@ -7,6 +7,7 @@ module.exports = {
     f_jstsh2: require('../../input/footprints/jstsh2'),
     f_jstsh5: require('../../input/footprints/jstsh5'),
     f_npth: require('../../input/footprints/npth'),
+    f_rotary_button: require('../../input/footprints/rotary_button'),
     f_rotary: require('../../input/footprints/rotary'),
     f_choc: require('../../input/footprints/choc'),
     f_choc: require('../../input/footprints/choc'),
