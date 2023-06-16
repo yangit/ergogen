@@ -9,6 +9,8 @@ Do read comments in `./input/build.sh`
 After you have executed the build command you need to prepare the files for JLCPCB.com
 So you go into `./output/*` and for every folder you do the steps below:
 
+**If the JLCPCB does not recognize .zip file then triple check all tracks next to holes and edgecuts**
+
 - Open the `.kicad` file under the generated folder
 - Run DRC
 - Press "B" to fill zones
