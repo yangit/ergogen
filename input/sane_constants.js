@@ -9,16 +9,14 @@ const assert = (exp, msg) => {
 }
 
 const keyRegexp = /^(C\d+)(R\d+)$/
-const args = [...process.argv]
-args.unshift()
-args.unshift()
+const [,,...args] = [...process.argv]
+
 try {
-  const docs = args.map(file => yaml.load(fs.readFileSync(`${__dirname}/../temp/${process.argv[2]}`, 'utf8')));
+  const docs = args.map(file => yaml.load(fs.readFileSync(`${__dirname}/../temp/${file}`, 'utf8')));
 
   const common = {}
-  // console.log(docs.map(({units})=>units));
   docs.forEach(doc => {
-    Object.keys(doc.units).forEach((key) => {
+    Object.keys(doc.units).forEach((key) => {      
       if (typeof common[key] === 'undefined') {
         common[key] = doc.units[key]
       }

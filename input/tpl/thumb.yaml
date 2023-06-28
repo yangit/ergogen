@@ -23,7 +23,7 @@ units:
   diode_y: -2.6
   mh_radius: 1.1
   connector_depth: 7
-  connector_extension: 4
+  connector_extension: 8
 points:  
   key:
     padding: cy
