@@ -68,7 +68,8 @@ units:
 
   mh_radius: 1.1
   connector_depth: 7
-  connector_extension: 8  
+  connector_extension: 8
+  connector_thumb_width: 10
   rR: 1 # will be -1 in right
   fR: 0 # will be 180 in right
 points:  
@@ -155,7 +156,7 @@ outlines:
         shift: [0, -cy/2+slide_y_size/4]
   _connector_thumb:
     - what: rectangle
-      size: [connector_depth+connector_extension, 10]
+      size: [connector_depth+connector_extension, connector_thumb_width]
       where: 
         ref: main_C2_R1
         shift: [connector_extension*rR/2+jst5_x_offset*rR, -jst5_y_offset]
