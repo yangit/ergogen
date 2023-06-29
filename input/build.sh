@@ -7,7 +7,7 @@
 
 set -ex
 rm -rf ./output
-PCBS=("left" "right" "thumb" "test")
+PCBS=("left" "right" "thumb" "thumb3" "test")
 LAYERS=F.Cu,F.Paste,F.SilkS,F.Mask,B.Cu,B.Paste,B.SilkS,B.Mask,Edge.Cuts
 OUTDIR=$(readlink -f "./output")
 mkdir -p ./output
@@ -17,21 +17,21 @@ mkdir -p ./temp
 node input/gen_yaml.js tpl/left.yaml
 node input/gen_yaml.js tpl/test.yaml
 node input/gen_yaml.js tpl/thumb.yaml
+node input/gen_yaml.js tpl/thumb3.yaml
 
 # mirror left.yaml to right.yaml
 node input/mirror_left.js
 
 # verify that the yaml files are using the same constants
-node input/sane_constants.js left.yaml thumb.yaml
+node input/sane_constants.js left.yaml thumb.yaml thumb3.yaml
 
 # some more verification
 node input/sane.js
 
 # generate kicad_pcb files using ergogen cli
-node src/cli.js ./temp/left.yaml -o output/
-node src/cli.js ./temp/right.yaml -o output/
-node src/cli.js ./temp/thumb.yaml -o output/
-node src/cli.js ./temp/test.yaml -o output/
+for PCB in ${PCBS[@]}; do
+    node src/cli.js ./temp/$PCB.yaml -o output/
+done
 
 # Ergogen(this fork) does not support routing pcbs, so I have bypassed that by manually routing pcbs
 # saving them under ./input/routed and then copying the tracks from saved pcbs to the generated pcbs
@@ -56,10 +56,10 @@ cd $OUTDIR
 cd ..
 
 # generate cpl files for SMT assembly (they are used to place components on the pcb)
-node input/make_cpl.js left.yaml
-node input/make_cpl.js right.yaml
-node input/make_cpl.js thumb.yaml
-node input/make_cpl.js test.yaml
+for PCB in ${PCBS[@]}; do
+    node input/make_cpl.js $PCB.yaml
+done
+
 
 #move generated files to their respective folders
 for PCB in ${PCBS[@]}; do
@@ -68,7 +68,8 @@ done
 
 #open file for manual inspection (again purely a UI thing, you can skip this step)
 # open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/thumb/thumb.kicad_pcb
-open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/right/right.kicad_pcb
+# open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/right/right.kicad_pcb
+open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/thumb3/thumb3.kicad_pcb
 # open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/left/left.kicad_pcb
 # open -n /Applications/KiCad/Pcbnew.app/ --args $OUTDIR/test/test.kicad_pcb
 
