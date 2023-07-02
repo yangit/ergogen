@@ -30,7 +30,14 @@ node input/sane.js
 
 # generate kicad_pcb files using ergogen cli
 for PCB in ${PCBS[@]}; do
+    mkdir -p $OUTDIR/$PCB
     node src/cli.js ./temp/$PCB.yaml -o output/
+done
+
+
+# generate config.openscad files to help with 3d modeling
+for PCB in ${PCBS[@]}; do
+    node ./input/genScad.js $OUTDIR/pcbs/${PCB}.kicad_pcb > $OUTDIR/$PCB/${PCB}_config.scad
 done
 
 # Ergogen(this fork) does not support routing pcbs, so I have bypassed that by manually routing pcbs
@@ -45,9 +52,9 @@ pkill -x pcbnew || true
 # generate step files
 cd $OUTDIR
 for PCB in ${PCBS[@]}; do
-    mkdir -p $OUTDIR/$PCB
     cd $OUTDIR/$PCB
     /Applications/KiCad/KiCad.app/Contents/MacOS/kicad-cli pcb export step $OUTDIR/pcbs/$PCB.kicad_pcb
+    
     mv ../outlines/${PCB}_* ./
     mv ../pcbs/${PCB}.kicad_pcb ./
     cp ../../input/bom/${PCB}.csv ./${PCB}_bom.csv

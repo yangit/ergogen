@@ -36,10 +36,10 @@ module.exports = {
 return `
     (footprint "Kailh_socket_PG1350_no_silk" (generator pcbnew)
     (layer "B.Cu")
+    (tags "kailh,choc")
     ${p.at /* parametric position */}
     (tedit 62C3C07E)
-    (descr "Kailh Choc PG1350 keyswitch socket mount")
-    (tags "kailh,choc")
+    (descr "Kailh Choc PG1350 keyswitch socket mount")    
     (attr smd)
     (fp_text reference "${p.ref}"(at 0 2.6) ${p.ref_hide} (layer "B.Fab")
         (effects(font(size 1 1)(thickness 0.15))(justify mirror)))
