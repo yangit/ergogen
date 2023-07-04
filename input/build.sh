@@ -38,6 +38,7 @@ done
 # generate config.openscad files to help with 3d modeling
 for PCB in ${PCBS[@]}; do
     node ./input/genScad.js $OUTDIR/pcbs/${PCB}.kicad_pcb > $OUTDIR/$PCB/${PCB}_config.scad
+    node ./input/genJsKeys.js $OUTDIR/pcbs/${PCB}.kicad_pcb > $OUTDIR/$PCB/${PCB}_config.ts
 done
 
 # Ergogen(this fork) does not support routing pcbs, so I have bypassed that by manually routing pcbs
