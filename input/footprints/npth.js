@@ -4,7 +4,8 @@ module.exports = {
         dia: 2.2,
     },
     body: p => {
-        const extraRadius  = (p.dia+1)/2
+        // const extraRadius  = (p.dia+1)/2
+        const extraRadius  = 2.5 // beacuse screw head is 3.5mm and nut is 3mm we need to stay safe at 5mm diameter
         return `(footprint "MountingHole_${p.dia}mm_M2" (generator pcbnew)
         (layer "F.Cu")
         ${p.at /* parametric position */} 
